@@ -3,51 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta
         name="description"
         content="Tienda online - Compra productos de forma rápida y sencilla."
     >
-
     <title>Tienda Online | Inicio</title>
-
     <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 
 <body>
-
-    <!-- ========================================
-         ENCABEZADO
-         ======================================== -->
-
     <header class="cabecera-sitio">
 
-        <div class="logo">
-            <span class="logo-icono"></span>
-            <strong>Site Name</strong>
+        <div class="cabecera-top">
+            <div class="logo">
+                <span class="logo-icono"></span>
+                <strong>Ferretería los Hermanos</strong>
+            </div>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+                ☰
+            </button>
         </div>
 
-        <nav aria-label="Navegación principal">
+        <nav class="nav-principal" id="menu-principal" aria-label="Navegación principal">
             <ul class="menu">
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
+                <li><a href="index.html" aria-current="page">Inicio</a></li>
 
-                <li>
-                    <a href="productos.html">Productos</a>
-                </li>
+                <li><a href="productos.html">Productos</a></li>
 
-                <li>
-                    <a href="nosotros.html">Nosotros</a>
-                </li>
+                <li><a href="nosotros.html">Nosotros</a></li>
 
-                <li>
-                    <a href="blog.html">Blog</a>
-                </li>
-
-                <li>
-                    <a href="contacto.html">Contacto</a>
-                </li>
+                <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
 
@@ -60,6 +46,25 @@
 
     </header>
 
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navPrincipal = document.querySelector('.nav-principal');
+
+        if (menuToggle && navPrincipal) {
+            menuToggle.addEventListener('click', () => {
+                const isOpen = navPrincipal.classList.toggle('is-open');
+                menuToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            navPrincipal.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    navPrincipal.classList.remove('is-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                });
+            }); <!-- si pantalla vertical, entonces menu hamburguesa -->
+        }
+    </script>
+
 
     <!-- ========================================
          CONTENIDO PRINCIPAL
@@ -70,7 +75,7 @@
         <!-- Enlaces de autenticación -->
 
         <div class="autenticacion">
-            <a href="login.html">Iniciar sesión</a>
+            <a href="inicio-sesion.html">Iniciar sesión</a>
             <span>|</span>
             <a href="registro.html">Registrar usuario</a>
         </div>
@@ -343,7 +348,7 @@
         <div class="informacion-pie">
 
             <p>
-                Site Name
+                Ferreteria los Hermanos.
             </p>
 
             <nav aria-label="Categorías">
@@ -380,7 +385,7 @@
         <div class="newsletter">
 
             <p>
-                Stay in Touch Join our Newsletter.
+                Suscríbete para recibir todas las novedades y promociones.
             </p>
 
             <form action="#" method="post">
@@ -396,13 +401,13 @@
                     type="email"
                     id="correo-newsletter"
                     name="correo"
-                    placeholder="Enter Email"
+                    placeholder="email@ejemplo.com"
                     autocomplete="email"
                     required
                 >
 
                 <button type="submit">
-                    Subscribe
+                    Suscribirme
                 </button>
 
             </form>

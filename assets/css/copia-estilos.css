@@ -5,7 +5,7 @@
     --color-primario-oscuro: #0b3d68;
     --color-secundario: #2a9d8f;
     --color-acento: #f4a261;
-    --color-texto: #004aaa;
+    --color-texto: #183044;
     --color-texto-suave: #526575;
     --color-fondo: #f4f7fa;
     --color-superficie: #ffffff;
@@ -99,7 +99,7 @@ input {
     width: 0.7rem;
     height: 0.7rem;
 
-    background-color: #961116;
+    background-color: #a91e23;
 
     border-radius: 2px;
 }
@@ -469,7 +469,7 @@ input {
 .informacion-pie p {
     margin: 0;
 
-    color: #961116;
+    color: #1d3f7c;
 
     font-size: 0.65rem;
     font-weight: 700;
@@ -611,6 +611,23 @@ input {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ========================================
    FLUID DESING
    ======================================== */
@@ -697,6 +714,23 @@ body {
     align-items: flex-end;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 html {
     scroll-behavior: smooth;
 }
@@ -744,8 +778,8 @@ main,
 
 .menu-toggle {
     display: block;
-    order: -1; /* mueve el menu hamburguesa a la izquierda pq esta x defecto al centro*/
-    margin-left: 0rem;
+    order: -1;
+    margin-left: 2rem;
     padding: 0.35rem 0.6rem;
     color: #ffffff;
     background: transparent;
