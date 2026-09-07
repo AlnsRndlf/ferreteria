@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Registro de usuario de Ferretería los Hermanos"
+    >
+
+    <title>Registro | Ferretería los Hermanos</title>
+
+    <link
+        rel="stylesheet"
+        href="assets/css/estilos.css"
+    >
+
+    <script
+        src="assets/js/registro.js"
+        defer
+    ></script>
+</head>
+
+
+<body>
+    <header class="cabecera-sitio">
+
+        <div class="cabecera-top">
+            <div class="logo">
+                <span class="logo-icono"></span>
+                <strong>Ferretería los Hermanos</strong>
+            </div>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+                ☰
+            </button>
+        </div>
+
+        <nav class="nav-principal" id="menu-principal" aria-label="Navegación principal">
+            <ul class="menu">
+                <li><a href="index.html" aria-current="page">Inicio</a></li>
+
+                <li><a href="productos.html">Productos</a></li>
+
+                <li><a href="nosotros.html">Nosotros</a></li>
+
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <div class="carrito">
+            <a href="carrito.html" aria-label="Ver carrito de compras">
+                🛒
+                <span>Cart (0)</span>
+            </a>
+        </div>
+
+    </header>
+
+    <main class="contenedor-login">
+
+        <section
+            class="tarjeta-login"
+            aria-labelledby="titulo-registro"
+        >
+
+            <!-- Encabezado -->
+
+            <header class="encabezado-login">
+
+                <h1 id="titulo-registro">
+                    Registro de usuario
+                </h1>
+
+                <p>
+                    Completa tus datos para crear una cuenta.
+                </p>
+
+            </header>
+
+
+            <!-- Formulario de registro -->
+
+            <form
+                id="formulario-registro"
+                class="formulario"
+                action="#"
+                method="post"
+                novalidate
+            >
+
+
+                <!-- RUN -->
+
+                <div class="campo-formulario">
+
+                    <label for="run">
+                        RUN
+                    </label>
+
+                    <input
+                        type="text"
+                        id="run"
+                        name="run"
+                        placeholder="19011022K"
+                        minlength="7"
+                        maxlength="9"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <span
+                        id="error-run"
+                        class="mensaje-error"
+                        aria-live="polite"
+                    ></span>
+
+                </div>
+
+
+                <!-- Nombre -->
+
+                <div class="campo-formulario">
+
+                    <label for="nombre">
+                        Nombre
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        maxlength="50"
+                        autocomplete="given-name"
+                        required
+                    >
+
+                    <span
+                        id="error-nombre"
+                        class="mensaje-error"
+                        aria-live="polite"
+                    ></span>
+
+                </div>
+
+
+                <!-- Apellidos -->
+
+                <div class="campo-formulario">
+
+                    <label for="apellidos">
+                        Apellidos
+                    </label>
+
+                    <input
+                        type="text"
+                        id="apellidos"
+                        name="apellidos"
+                        maxlength="100"
+                        autocomplete="family-name"
+                        required
+                    >
+
+                    <span
+                        id="error-apellidos"
+                        class="mensaje-error"
+                        aria-live="polite"
+                    ></span>
+
+                </div>
+
+
+                <!-- Correo -->
+
+                <div class="campo-formulario">
+
+                    <label for="correo">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        maxlength="100"
+                        placeholder="ejemplo@duoc.cl"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <span
+                        id="error-correo"
+                        class="mensaje-error"
+                        aria-live="polite"
+                    ></span>
+
+                </div>
+
+
+                <!-- Contraseña -->
+
+                <div class="campo-formulario">
+
+                    <label for="contrasena">
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="contrasena"
+                        name="contrasena"
+                        minlength="4"
+                        maxlength="10"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <span
+                        id="error-contrasena"
+                        class="mensaje-error"
+                        aria-live="polite"
+                    ></span>
+
+                </div>
+
+
+                <!-- Fecha de nacimiento -->
+
+                <div class="campo-formulario">
+
+                    <label for="fecha-nacimiento">
+                        Fecha de nacimiento
+                    </label>
+
+                    <input
+                        type="date"
+                        id="fecha-nacimiento"
+                        name="fechaNacimiento"
+                        autocomplete="bday"
+                    >
+
+                    <span
+                        id="error-fecha-nacimiento"
+                        class="mensaje-error"
+                        aria-live="polite"
+                    ></span>
+
+                </div>
+
+
+                <!-- Región -->
+
+                <div class="campo-formulario">
+
+                    <label for="region">
+                        Región
+                    </label>
+
+                    <select
+                        id="region"
+                        name="region"
+                    >
+                        <option value="">
+                            Seleccione una región
+                        </option>
+                    </select>
+
+                    <span
+                        id="error-region"
+                        class="mensaje-error"
+                        aria-live="polite"
+                    ></span>
+
+                </div>
+
+
+                <!-- Comuna -->
+
+                <div class="campo-formulario">
+
+                    <label for="comuna">
+                        Comuna
+                    </label>
+
+                    <select
+                        id="comuna"
+                        name="comuna"
+                        disabled
+                    >
+                        <option value="">
+                            Seleccione una comuna
+                        </option>
+                    </select>
+
+                    <span
+                        id="error-comuna"
+                        class="mensaje-error"
+                        aria-live="polite"
+                    ></span>
+
+                </div>
+
+
+                <!-- Dirección -->
+
+                <div class="campo-formulario">
+
+                    <label for="direccion">
+                        Dirección
+                    </label>
+
+                    <input
+                        type="text"
+                        id="direccion"
+                        name="direccion"
+                        maxlength="300"
+                        autocomplete="street-address"
+                        required
+                    >
+
+                    <span
+                        id="error-direccion"
+                        class="mensaje-error"
+                        aria-live="polite"
+                    ></span>
+
+                </div>
+
+
+                <!-- Mensaje general -->
+
+                <p
+                    id="mensaje-registro"
+                    class="mensaje-registro"
+                    aria-live="polite"
+                ></p>
+
+
+                <!-- Botón -->
+
+                <button
+                    type="submit"
+                    class="boton-login"
+                >
+                    Registrarse
+                </button>
+
+            </form>
+
+
+            <!-- Volver al login -->
+
+            <footer class="registro-login">
+
+                <p>
+                    ¿Ya tienes una cuenta?
+
+                    <a href="inicio-sesion.html">
+                        Inicia sesión aquí
+                    </a>
+                </p>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
