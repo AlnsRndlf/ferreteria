@@ -9,6 +9,7 @@
     >
     <title>Tienda Online | Inicio</title>
     <link rel="stylesheet" href="assets/css/estilos.css">
+    <script src="assets/js/menu.js" defer></script>
 </head>
 
 <body>
@@ -35,38 +36,17 @@
 
                 <li><a href="contacto.html">Contacto</a></li>
                 
-                <li><a href="cartelera.html">Cartelera</a></li>
+                <li><a href="actividades.html">Actividades</a></li>
             </ul>
         </nav>
 
         <div class="carrito">
             <a href="carrito.html" aria-label="Ver carrito de compras">
-                🛒
-                <span>Cart (0)</span>
+                <span>carrito <br> (proximamente)</span>
             </a>
         </div>
 
     </header>
-
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navPrincipal = document.querySelector('.nav-principal');
-
-        if (menuToggle && navPrincipal) {
-            menuToggle.addEventListener('click', () => {
-                const isOpen = navPrincipal.classList.toggle('is-open');
-                menuToggle.setAttribute('aria-expanded', String(isOpen));
-            });
-
-            navPrincipal.querySelectorAll('a').forEach((link) => {
-                link.addEventListener('click', () => {
-                    navPrincipal.classList.remove('is-open');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                });
-            }); <!-- si pantalla vertical, entonces menu hamburguesa -->
-        }
-    </script>
-
 
     <!-- ========================================
          CONTENIDO PRINCIPAL
@@ -78,12 +58,11 @@
 
         <div class="autenticacion">
             <a href="inicio-sesion.html">Iniciar sesión</a>
-            <span>|</span>
-            <a href="registro.html">Registrar usuario</a>
+
         </div>
 
 
-        <!-- ========================================
+        <!-- ======================================me ==
              BANNER PRINCIPAL
              ======================================== -->
 
@@ -139,52 +118,41 @@
 
                 <article class="tarjeta-producto">
 
-                    <a href="producto.html">
+                    <a href="producto-martillo.html">
                         <img
-                            src="assets/img/producto-1.jpg"
-                            alt="Producto 1"
+                            src="assets/img/martillo.png"
+                            alt="Martillo de carpintero"
                         >
                     </a>
 
                     <h3>
-                        <a href="producto.html">
-                            Product Title
+                        <a href="producto-martillo.html">
+                            Martillo de carpintero
                         </a>
                     </h3>
 
                     <div class="informacion-producto">
-                        <span>Atributos</span>
-                        <strong>$00.00</strong>
+                        <span>Herramienta manual</span>
+                        <strong>$12.990</strong>
                     </div>
 
                 </article>
 
 
                 <!-- Producto 2 -->
-
-                <article class="tarjeta-producto">
-
-                    <a href="producto.html">
-                        <img
-                            src="assets/img/producto-2.jpg"
-                            alt="Producto 2"
-                        >
-                    </a>
-
-                    <h3>
-                        <a href="producto.html">
-                            Product Title
+            <article class="tarjeta-producto">
+                        <a href="producto-pintura-sipa.html">
+                            <img src="assets/img/pintura-sipa.png" alt="Pintura Látex Interior Blanco 1 Galón SIPA">
                         </a>
-                    </h3>
-
-                    <div class="informacion-producto">
-                        <span>Atributos</span>
-                        <strong>$00.00</strong>
-                    </div>
-
-                </article>
-
-
+                        <h3>
+                            <a href="producto-pintura-sipa.html">Pintura Látex Interior Blanco 1 Galón</a>
+                        </h3>
+                        <div class="informacion-producto">
+                            <span>SIPA</span>
+                            <strong>$9.990</strong>
+                        </div>
+                    </article>
+                    
                 <!-- Producto 3 -->
 
                 <article class="tarjeta-producto">
@@ -355,29 +323,8 @@
 
             <nav aria-label="Categorías">
 
-                <a href="categoria.html">
-                    Category X
-                </a>
-
-                <span>|</span>
-
-                <a href="categoria.html">
-                    Category Y
-                </a>
-
-                <span>|</span>
-
-                <a href="categoria.html">
-                    Category Z
-                </a>
-
             </nav>
 
-            <div class="metodos-pago">
-                <span>VISA</span>
-                <span>MC</span>
-                <span>AMEX</span>
-            </div>
 
         </div>
 
@@ -409,7 +356,7 @@
                 >
 
                 <button type="submit">
-                    Suscribirme
+                    Suscribirme<br>(proximamente)
                 </button>
 
             </form>
