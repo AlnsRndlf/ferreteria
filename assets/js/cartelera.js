@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lista.forEach(item => {
             const tarjeta = document.createElement('article');
             
+            // Reutiliza la clase definida por mi compañero y agrega borde especial si los cupos son criticos
             tarjeta.className = `tarjeta-producto ${item.critico && item.cupos > 0 ? 'cupos-criticos' : ''}`;
 
             const estadoTexto = item.cupos > 0 
