@@ -3,9 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0">
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
@@ -20,47 +22,99 @@
     >
 
     <script
-        src="assets/js/registro.js"
+        src="assets/js/regiones-comunas.js"
         defer
     ></script>
+
+    <script
+        src="assets/js/registro.js"
+        defer
+></script>
 </head>
 
 
 <body>
+
+    <!-- ========================================
+         HEADER
+         ======================================== -->
+
     <header class="cabecera-sitio">
 
         <div class="cabecera-top">
+
             <div class="logo">
                 <span class="logo-icono"></span>
                 <strong>Ferretería los Hermanos</strong>
             </div>
 
-            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="menu-principal"
+                aria-label="Abrir menú"
+            >
                 ☰
             </button>
+
         </div>
 
-        <nav class="nav-principal" id="menu-principal" aria-label="Navegación principal">
+
+        <nav
+            class="nav-principal"
+            id="menu-principal"
+            aria-label="Navegación principal"
+        >
+
             <ul class="menu">
                 <li><a href="index.html">Inicio</a></li>
 
-                <li><a href="productos.html">Productos</a></li>
+                <li>
+                    <a href="index.html">
+                        Inicio
+                    </a>
+                </li>
 
-                <li><a href="nosotros.html">Nosotros</a></li>
+                <li>
+                    <a href="productos.html">
+                        Productos
+                    </a>
+                </li>
+
+                <li>
+                    <a href="nosotros.html">
+                        Nosotros
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contacto.html">
+                        Contacto
+                    </a>
+                </li>
 
                 <li><a href="contacto.html">Contacto</a></li>
 
                 <li><a href="actividades.html">Actividades</a></li>
             </ul>
+
         </nav>
+
 
         <div class="carrito">
             <a href="carrito.html" aria-label="Ver carrito de compras">
                 <span>carrito <br> (proximamente)</span>
             </a>
+
         </div>
 
     </header>
+
+
+    <!-- ========================================
+         CONTENIDO PRINCIPAL
+         ======================================== -->
 
     <main class="contenedor-login">
 
@@ -69,7 +123,10 @@
             aria-labelledby="titulo-registro"
         >
 
-            <!-- Encabezado -->
+
+            <!-- ========================================
+                 ENCABEZADO DEL REGISTRO
+                 ======================================== -->
 
             <header class="encabezado-login">
 
@@ -84,7 +141,9 @@
             </header>
 
 
-            <!-- Formulario de registro -->
+            <!-- ========================================
+                 FORMULARIO DE REGISTRO
+                 ======================================== -->
 
             <form
                 id="formulario-registro"
@@ -229,57 +288,6 @@
                 </div>
 
 
-                <!-- Confirmar contraseña -->
-
-                <div class="campo-formulario">
-
-                    <label for="confirmar-contrasena">
-                        Confirmar contraseña
-                    </label>
-
-                    <input
-                        type="password"
-                        id="confirmar-contrasena"
-                        name="confirmarContrasena"
-                        minlength="4"
-                        maxlength="10"
-                        autocomplete="new-password"
-                        required
-                    >
-
-                    <span
-                        id="error-confirmar-contrasena"
-                        class="mensaje-error"
-                        aria-live="polite"
-                    ></span>
-
-                </div>
-
-
-                <!-- Fecha de nacimiento -->
-
-                <div class="campo-formulario">
-
-                    <label for="fecha-nacimiento">
-                        Fecha de nacimiento
-                    </label>
-
-                    <input
-                        type="date"
-                        id="fecha-nacimiento"
-                        name="fechaNacimiento"
-                        autocomplete="bday"
-                    >
-
-                    <span
-                        id="error-fecha-nacimiento"
-                        class="mensaje-error"
-                        aria-live="polite"
-                    ></span>
-
-                </div>
-
-
                 <!-- Región -->
 
                 <div class="campo-formulario">
@@ -380,7 +388,9 @@
             </form>
 
 
-            <!-- Volver al login -->
+            <!-- ========================================
+                 VOLVER AL LOGIN
+                 ======================================== -->
 
             <footer class="registro-login">
 
@@ -397,6 +407,54 @@
         </section>
 
     </main>
+
+
+    <!-- ========================================
+         MENÚ RESPONSIVO
+         ======================================== -->
+
+    <script>
+
+        const menuToggle = document.querySelector('.menu-toggle');
+
+        const navPrincipal = document.querySelector('.nav-principal');
+
+
+        if (menuToggle && navPrincipal) {
+
+            menuToggle.addEventListener('click', function () {
+
+                const menuAbierto =
+                    navPrincipal.classList.toggle('is-open');
+
+                menuToggle.setAttribute(
+                    'aria-expanded',
+                    String(menuAbierto)
+                );
+
+            });
+
+
+            navPrincipal
+                .querySelectorAll('a')
+                .forEach(function (enlace) {
+
+                    enlace.addEventListener('click', function () {
+
+                        navPrincipal.classList.remove('is-open');
+
+                        menuToggle.setAttribute(
+                            'aria-expanded',
+                            'false'
+                        );
+
+                    });
+
+                });
+
+        }
+
+    </script>
 
 </body>
 
