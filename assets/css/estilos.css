@@ -1018,6 +1018,7 @@ main,
 
 .boton-login:hover {
     background-color: var(--color-primario-oscuro);
+}
 /* ========================================
    ESTILOS DE CARTELERA Y FILTROS 
    ======================================== */
@@ -1103,5 +1104,4 @@ main,
 /* Indicador visual de alerta de cupos */
 .cupos-criticos {
     border-top: 4px solid var(--color-acento) !important;
-}
 }
