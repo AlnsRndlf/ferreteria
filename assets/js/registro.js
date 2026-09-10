@@ -9,7 +9,6 @@ const nombre = document.getElementById('nombre');
 const apellidos = document.getElementById('apellidos');
 const correo = document.getElementById('correo');
 const contrasena = document.getElementById('contrasena');
-const fechaNacimiento = document.getElementById('fecha-nacimiento');
 const region = document.getElementById('region');
 const comuna = document.getElementById('comuna');
 const direccion = document.getElementById('direccion');
@@ -332,7 +331,6 @@ formulario.addEventListener('submit', function (evento) {
         apellidos: apellidos.value.trim(),
         correo: correo.value.trim(),
         contrasena: contrasena.value,
-        fechaNacimiento: fechaNacimiento.value,
         region: region.value,
         comuna: comuna.value,
         direccion: direccion.value.trim()

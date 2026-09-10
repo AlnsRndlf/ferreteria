@@ -30,6 +30,88 @@
 
 <body>
 
+    <!-- ========================================
+         HEADER
+         ======================================== -->
+
+    <header class="cabecera-sitio">
+
+        <div class="cabecera-top">
+
+            <div class="logo">
+                <span class="logo-icono"></span>
+                <strong>Ferretería los Hermanos</strong>
+            </div>
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="menu-principal"
+                aria-label="Abrir menú"
+            >
+                ☰
+            </button>
+
+        </div>
+
+
+        <nav
+            class="nav-principal"
+            id="menu-principal"
+            aria-label="Navegación principal"
+        >
+
+            <ul class="menu">
+
+                <li>
+                    <a href="index.html">
+                        Inicio
+                    </a>
+                </li>
+
+                <li>
+                    <a href="productos.html">
+                        Productos
+                    </a>
+                </li>
+
+                <li>
+                    <a href="nosotros.html">
+                        Nosotros
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contacto.html">
+                        Contacto
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+
+        <div class="carrito">
+
+            <a
+                href="carrito.html"
+                aria-label="Ver carrito de compras"
+            >
+                🛒
+                <span>Cart (0)</span>
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- ========================================
+         CONTENIDO PRINCIPAL
+         ======================================== -->
+
     <main class="contenedor-login">
 
         <section
@@ -37,7 +119,10 @@
             aria-labelledby="titulo-registro"
         >
 
-            <!-- Encabezado -->
+
+            <!-- ========================================
+                 ENCABEZADO DEL REGISTRO
+                 ======================================== -->
 
             <header class="encabezado-login">
 
@@ -52,7 +137,9 @@
             </header>
 
 
-            <!-- Formulario de registro -->
+            <!-- ========================================
+                 FORMULARIO DE REGISTRO
+                 ======================================== -->
 
             <form
                 id="formulario-registro"
@@ -197,30 +284,6 @@
                 </div>
 
 
-                <!-- Fecha de nacimiento -->
-
-                <div class="campo-formulario">
-
-                    <label for="fecha-nacimiento">
-                        Fecha de nacimiento
-                    </label>
-
-                    <input
-                        type="date"
-                        id="fecha-nacimiento"
-                        name="fechaNacimiento"
-                        autocomplete="bday"
-                    >
-
-                    <span
-                        id="error-fecha-nacimiento"
-                        class="mensaje-error"
-                        aria-live="polite"
-                    ></span>
-
-                </div>
-
-
                 <!-- Región -->
 
                 <div class="campo-formulario">
@@ -321,7 +384,9 @@
             </form>
 
 
-            <!-- Volver al login -->
+            <!-- ========================================
+                 VOLVER AL LOGIN
+                 ======================================== -->
 
             <footer class="registro-login">
 
@@ -338,6 +403,54 @@
         </section>
 
     </main>
+
+
+    <!-- ========================================
+         MENÚ RESPONSIVO
+         ======================================== -->
+
+    <script>
+
+        const menuToggle = document.querySelector('.menu-toggle');
+
+        const navPrincipal = document.querySelector('.nav-principal');
+
+
+        if (menuToggle && navPrincipal) {
+
+            menuToggle.addEventListener('click', function () {
+
+                const menuAbierto =
+                    navPrincipal.classList.toggle('is-open');
+
+                menuToggle.setAttribute(
+                    'aria-expanded',
+                    String(menuAbierto)
+                );
+
+            });
+
+
+            navPrincipal
+                .querySelectorAll('a')
+                .forEach(function (enlace) {
+
+                    enlace.addEventListener('click', function () {
+
+                        navPrincipal.classList.remove('is-open');
+
+                        menuToggle.setAttribute(
+                            'aria-expanded',
+                            'false'
+                        );
+
+                    });
+
+                });
+
+        }
+
+    </script>
 
 </body>
 
