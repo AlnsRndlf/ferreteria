@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Videos de ayuda y tutoriales técnicos de Ferretería Los Maestros.">
+    <title>Ferreteria Los Maestros | Videos de Ayuda</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+
+<body>
+    <header class="cabecera-sitio">
+        <div class="cabecera-top">
+            <div class="logo">
+                <span class="logo-icono"></span>
+                <strong>Ferretería Los Maestros</strong>
+            </div>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+                ☰
+            </button>
+        </div>
+
+        <nav class="nav-principal" id="menu-principal" aria-label="Navegación principal">
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="tutoriales.html" aria-current="page">Videos de Ayuda</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <div class="carrito">
+            <a href="carrito.html" aria-label="Ver carrito de compras">
+                🛒
+                <span>Carrito (0)</span>
+            </a>
+        </div>
+    </header>
+
+    <main id="contenido-principal">
+        <div class="autenticacion">
+            <a href="inicio-sesion.html">Iniciar sesion</a>
+            <span>|</span>
+            <a href="registro.html">Registrar usuario</a>
+        </div>
+
+        <h1 class="centrado">VIDEOS DE AYUDA Y TUTORIALES TECNICOS</h1>
+        <p class="centrado-subtitulo">Aprende a usar tus herramientas y aplicar materiales de forma segura en tu obra o hogar.</p>
+
+        <section class="tutoriales-section" aria-labelledby="titulo-tutoriales">
+            <h2 id="titulo-tutoriales" class="visualmente-oculto">Biblioteca de Guías en Video</h2>
+            
+            <div class="filtros-container">
+                <div class="campo-filtro">
+                    <label for="filtro-categoria">Filtrar por Especialidad:</label>
+                    <select id="filtro-categoria">
+                        <option value="todas">Todas las especialidades</option>
+                        <option value="herramientas">Herramientas Eléctricas</option>
+                        <option value="gasfiteria">Gasfitería y Sanitarios</option>
+                        <option value="construccion">Construcción y Obra</option>
+                        <option value="electricidad">Electricidad e Instalaciones</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="contenedor-tutoriales" class="grilla-productos"></div>
+        </section>
+    </main>
+
+    <footer class="pie-sitio">
+        <div class="informacion-pie">
+            <p>Ferretería Los Maestros - La Serena, Región de Coquimbo.</p>
+            <nav aria-label="Categorías">
+                <a href="productos.html?cat=herramientas">Herramientas</a>
+                <span>|</span>
+                <a href="productos.html?cat=gasfiteria">Gasfitería</a>
+                <span>|</span>
+                <a href="productos.html?cat=construccion">Construcción</a>
+            </nav>
+            <div class="metodos-pago">
+                <span>VISA</span>
+                <span>MC</span>
+                <span>AMEX</span>
+            </div>
+        </div>
+
+        <div class="newsletter">
+            <p>Suscríbete para recibir novedades y guías técnicas.</p>
+            <form action="#" method="post">
+                <label for="correo-newsletter" class="visualmente-oculto">Correo electrónico</label>
+                <input type="email" id="correo-newsletter" name="correo" placeholder="email@ejemplo.com" autocomplete="email" required>
+                <button type="submit">Suscribirme</button>
+            </form>
+        </div>
+    </footer>
+
+    <script src="assets/js/tutoriales.js"></script>
+</body>
+</html>
