@@ -1151,3 +1151,319 @@ body {
 main {
     flex: 1;
 }
+
+
+/* ========================================
+   PRODUCTOS
+   ======================================== */
+
+.productos-destacados {
+    margin: 0 1rem 2rem;
+}
+
+/* ========================================
+   DETALLE DEL PRODUCTO
+   ======================================== */
+
+.ruta-navegacion {
+    margin: 0 1rem 1.5rem;
+    color: var(--color-texto-suave);
+    font-size: 0.75rem;
+}
+
+.detalle-producto {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 0 1rem 2rem;
+    padding: 1rem;
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+.detalle-producto-imagen {
+    display: grid;
+    place-items: center;
+    min-height: 16rem;
+    padding: 1rem;
+    background-color: #f2f2f2;
+    border-radius: 0.35rem;
+}
+
+.detalle-producto-imagen img {
+    width: 100%;
+    max-width: 32rem;
+}
+
+.detalle-producto-contenido h1 {
+    margin: 0 0 0.75rem;
+    color: var(--color-primario-oscuro);
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.etiqueta-producto {
+    margin: 0 0 0.5rem;
+    color: var(--color-secundario);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.descripcion-producto {
+    margin: 0 0 1rem;
+    color: var(--color-texto-suave);
+}
+
+.precio-producto {
+    margin: 0 0 0.25rem;
+    color: var(--color-primario-oscuro);
+    font-size: 1.75rem;
+    font-weight: 800;
+}
+
+.estado-producto {
+    margin: 0 0 1rem;
+    color: var(--color-secundario);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.boton-producto {
+    cursor: pointer;
+}
+
+.especificaciones-producto {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-borde);
+}
+
+.especificaciones-producto h2 {
+    margin: 0 0 0.75rem;
+    color: var(--color-primario-oscuro);
+    font-size: 1.1rem;
+}
+
+.especificaciones-producto dl {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0;
+}
+
+.especificaciones-producto dl div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgb(201 212 222 / 60%);
+}
+
+.especificaciones-producto dt {
+    font-weight: 700;
+}
+
+.especificaciones-producto dd {
+    margin: 0;
+    text-align: right;
+}
+/* ========================================
+   GRILLA DE PRODUCTOS
+   ======================================== */
+
+.grilla-productos {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 1rem;
+}
+
+
+/* ========================================
+   TARJETA
+   ======================================== */
+
+.tarjeta-producto {
+    min-width: 0;
+
+    padding: 0.6rem;
+
+    background-color: #f2f2f2;
+
+    border: 1px solid #d1d1d1;
+    border-top: 3px solid #1d3f7c;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 0.4rem 1rem rgba(29, 63, 124, 0.15);
+}
+
+
+/* ========================================
+   IMAGEN PRODUCTO
+   ======================================== */
+
+.tarjeta-producto img {
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+
+    object-fit: cover;
+
+    background-color: #ffffff;
+
+    border: 1px solid #818286;
+}
+
+
+/* ========================================
+   INFORMACIÓN PRODUCTO
+   ======================================== */
+
+.tarjeta-producto h3 {
+    margin: 0.6rem 0;
+
+    text-align: center;
+
+    font-size: 0.65rem;
+    font-weight: normal;
+}
+
+.tarjeta-producto h3 a {
+    color: #1d3f7c;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.tarjeta-producto h3 a:hover {
+    color: #a91e23;
+
+    text-decoration: underline;
+}
+
+
+/* ========================================
+   PRECIO
+   ======================================== */
+
+.informacion-producto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 0.5rem;
+
+    color: #333333;
+
+    font-size: 0.6rem;
+}
+
+.informacion-producto strong {
+    color: #a91e23;
+
+    font-weight: 700;
+}
+
+
+/* Cuadro gris cuando el producto todavía no tiene foto real */
+
+.marcador-imagen-producto {
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+
+    background-color: #d9d9d9;
+    border: 1px solid #818286;
+}
+
+.marcador-imagen-producto-grande {
+    max-width: 32rem;
+    aspect-ratio: 4 / 3;
+}
+
+
+/* Botón "Agregar al carrito" dentro de la tarjeta */
+
+.boton-agregar-carrito {
+    display: block;
+    width: 100%;
+
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+
+    background-color: #1d3f7c;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 0.3rem;
+
+    font-size: 0.65rem;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.boton-agregar-carrito:hover {
+    background-color: #a91e23;
+}
+
+/* ========================================
+   FILTRO DE CATEGORÍA (productos.html)
+   ======================================== */
+
+.subtitulo-productos {
+    max-width: 40rem;
+    margin: 0 auto 1.5rem;
+
+    color: var(--color-texto-suave);
+    font-size: 0.9rem;
+}
+
+
+.filtros-productos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+
+    margin: 0 auto 1.5rem;
+    padding: 1rem;
+
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+}
+
+.filtros-productos label {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.filtros-productos select {
+    padding: 0.5rem 0.75rem;
+
+    background-color: #ffffff;
+    border: 1px solid var(--color-borde);
+    border-radius: 0.3rem;
+
+    font: inherit;
+    font-size: 0.9rem;
+
+    cursor: pointer;
+}
+
+.filtros-productos select:focus {
+    outline: none;
+    border-color: var(--color-primario);
+}
+
