@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="description"
+        content="Catálogo completo de productos de Ferretería Los Maestros: herramientas, pinturas, materiales de construcción y más."
+    >
+    <title>Productos | Ferretería Los Maestros</title>
+
+    <link rel="stylesheet" href="assets/css/estilos.css">
+    <script src="assets/js/menu.js" defer></script>
+    <script src="assets/js/productos-datos.js" defer></script>
+    <script src="assets/js/productos.js" defer></script>
+</head>
+
+<body>
+    <header class="cabecera-sitio">
+        <div class="cabecera-top">
+            <div class="logo">
+                <span class="logo-icono"></span>
+                <strong>Ferretería Los Maestros</strong>
+            </div>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+                ☰
+            </button>
+        </div>
+
+        <nav class="nav-principal" id="menu-principal" aria-label="Navegación principal">
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html" aria-current="page">Productos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <div class="carrito">
+            <a href="carrito.html" aria-label="Ver carrito de compras">
+                🛒 Carrito
+            </a>
+        </div>
+    </header>
+
+    <main id="contenido-principal">
+        <div class="autenticacion">
+            <a href="inicio-sesion.html">Iniciar sesión</a>
+            <span aria-hidden="true"> | </span>
+            <a href="registro.html">Registrarse</a>
+        </div>
+
+        <section class="productos-destacados" aria-labelledby="titulo-productos">
+
+            <h1 id="titulo-productos" class="centrado">Productos</h1>
+
+            <p class="centrado subtitulo-productos">
+                Selección de 85 productos de nuestro catálogo, que en tienda supera las 800 referencias.
+            </p>
+
+            <div class="filtros-productos">
+                <label for="filtro-categoria">Filtrar por categoría</label>
+
+                <select id="filtro-categoria">
+                    <option value="">Todas las categorías</option>
+                </select>
+            </div>
+
+            <p id="mensaje-productos" class="mensaje-registro" aria-live="polite"></p>
+
+            <div id="lista-productos" class="grilla-productos">
+                <!-- Las tarjetas de producto se generan dinámicamente con productos.js -->
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="pie-sitio">
+        <div class="informacion-pie">
+            <p>Ferretería Los Maestros.</p>
+            <nav aria-label="Categorías"></nav>
+        </div>
+
+        <div class="newsletter">
+            <p>Suscríbete para recibir todas las novedades y promociones.</p>
+            <form action="#" method="post">
+                <label for="correo-newsletter" class="visualmente-oculto">
+                    Correo electrónico
+                </label>
+                <input
+                    type="email"
+                    id="correo-newsletter"
+                    name="correo"
+                    placeholder="email@ejemplo.com"
+                    autocomplete="email"
+                    required
+                >
+                <button type="submit">
+                    Suscribirme<br>(proximamente)
+                </button>
+            </form>
+        </div>
+    </footer>
+</body>
+</html>
+
