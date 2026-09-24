@@ -17,7 +17,7 @@ const productos = [
         precio: 5990,
         stock: 80,
         stockMinimo: 20,
-        imagen: null
+        imagen: 'assets/img/Cemento Polpaico gris 25 kg.png'
     },
 
     {
@@ -31,7 +31,7 @@ const productos = [
         precio: 7490,
         stock: 40,
         stockMinimo: 10,
-        imagen: null
+        imagen: 'assets/img/Cemento Melón blanco 25 kg.jpg'
     },
 
     {
@@ -45,7 +45,7 @@ const productos = [
         precio: 5200,
         stock: 50,
         stockMinimo: 15,
-        imagen: null
+        imagen: 'assets/img/Mortero cola cerámica 25 kg.png'
     },
 
     {
@@ -59,7 +59,7 @@ const productos = [
         precio: 6490,
         stock: 30,
         stockMinimo: 10,
-        imagen: null
+        imagen: 'assets/img/Mortero nivelador piso 25 kg.png'
     },
 
     {
@@ -73,7 +73,7 @@ const productos = [
         precio: 1800,
         stock: 60,
         stockMinimo: 20,
-        imagen: null
+        imagen: 'assets/img/Arena fina construccion 25 kg.png'
     },
 
     {
