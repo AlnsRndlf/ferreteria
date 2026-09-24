@@ -1,5 +1,5 @@
 // ========================================
-// MENÚ HAMBURGUESA (RESPONSIVE)
+// MENU HAMBURGUESA (RESPONSIVE)
 // ========================================
 
 const menuToggle = document.querySelector('.menu-toggle');

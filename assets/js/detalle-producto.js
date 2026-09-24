@@ -1,6 +1,6 @@
 // ========================================
-// DETALLE DINÁMICO DE UN PRODUCTO
-// El código del producto a mostrar se guarda en
+// DETALLE DINAMICO DE UN PRODUCTO
+// El codigo del producto a mostrar se guarda en
 // localStorage cuando el usuario hace clic en una
 // tarjeta de productos.html (ver productos.js).
 // ========================================
