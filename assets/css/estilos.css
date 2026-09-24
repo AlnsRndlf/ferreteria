@@ -1134,7 +1134,7 @@ main,
     background-color: var(--color-primario-oscuro);
 }
 /* ========================================
-   ESTRUCTURA GENERAL DE LA PÁGINA
+   ESTRUCTURA GENERAL DE LA PAGINA
    ======================================== */
 
 html,
@@ -1151,8 +1151,6 @@ body {
 main {
     flex: 1;
 }
-
-
 /* ========================================
    PRODUCTOS
    ======================================== */
@@ -1230,10 +1228,6 @@ main {
     font-weight: 700;
 }
 
-.boton-producto {
-    cursor: pointer;
-}
-
 .especificaciones-producto {
     margin-top: 1.5rem;
     padding-top: 1rem;
@@ -1268,6 +1262,29 @@ main {
     margin: 0;
     text-align: right;
 }
+
+/* ========================================
+   TITULO OCULTO
+   ======================================== */
+
+.visualmente-oculto {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
+}
+
 /* ========================================
    GRILLA DE PRODUCTOS
    ======================================== */
@@ -1279,7 +1296,6 @@ main {
 
     gap: 1rem;
 }
-
 
 /* ========================================
    TARJETA
@@ -1306,7 +1322,6 @@ main {
     box-shadow: 0 0.4rem 1rem rgba(29, 63, 124, 0.15);
 }
 
-
 /* ========================================
    IMAGEN PRODUCTO
    ======================================== */
@@ -1323,9 +1338,8 @@ main {
     border: 1px solid #818286;
 }
 
-
 /* ========================================
-   INFORMACIÓN PRODUCTO
+   INFORMACION PRODUCTO
    ======================================== */
 
 .tarjeta-producto h3 {
@@ -1351,7 +1365,6 @@ main {
     text-decoration: underline;
 }
 
-
 /* ========================================
    PRECIO
    ======================================== */
@@ -1374,8 +1387,7 @@ main {
     font-weight: 700;
 }
 
-
-/* Cuadro gris cuando el producto todavía no tiene foto real */
+/* Cuadro gris cuando el producto todavia no tiene foto real */
 
 .marcador-imagen-producto {
     width: 100%;
@@ -1391,34 +1403,86 @@ main {
     aspect-ratio: 4 / 3;
 }
 
+@media (min-width: 36rem) {
 
-/* Botón "Agregar al carrito" dentro de la tarjeta */
+    .grilla-productos {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-.boton-agregar-carrito {
-    display: block;
-    width: 100%;
+    .productos-destacados {
+        margin-right: 1.5rem;
+        margin-left: 1.5rem;
+    }
 
-    margin-top: 0.5rem;
-    padding: 0.5rem;
-
-    background-color: #1d3f7c;
-    color: #ffffff;
-
-    border: none;
-    border-radius: 0.3rem;
-
-    font-size: 0.65rem;
-    font-weight: 700;
-
-    cursor: pointer;
 }
 
-.boton-agregar-carrito:hover {
-    background-color: #a91e23;
+.grilla-productos {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.5rem;
+}
+
+.tarjeta-producto img {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+}
+
+.grilla-productos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.tarjeta-producto {
+    padding: 1.5rem;
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-2px);
+}
+
+.tarjeta-producto img {
+    border: 0;
+    border-radius: 0.35rem;
+}
+
+.informacion-producto {
+    color: var(--color-texto-suave);
+}
+
+.informacion-producto strong {
+    color: var(--color-primario-oscuro);
+}
+
+@media (min-width: 48rem) {
+
+    .detalle-producto {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: start;
+        padding: 1.5rem;
+    }
+
+    .grilla-productos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (min-width: 64rem) {
+
+    .grilla-productos {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
 }
 
 /* ========================================
-   FILTRO DE CATEGORÍA (productos.html)
+   FILTRO DE CATEGORIA (productos.html)
    ======================================== */
 
 .subtitulo-productos {
@@ -1428,7 +1492,6 @@ main {
     color: var(--color-texto-suave);
     font-size: 0.9rem;
 }
-
 
 .filtros-productos {
     display: flex;
@@ -1466,4 +1529,3 @@ main {
     outline: none;
     border-color: var(--color-primario);
 }
-
