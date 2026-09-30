@@ -126,20 +126,23 @@ function mostrarProductos(lista, contenedor) {
 // ========================================
 
 const contenedorDestacados = document.getElementById('lista-destacados');
+   
 
+/*
+    los productos destacados fueron agregados segun categoria, esto por la falta de metricas
+    para destacar los mas vendidos en x tiempo.
+    cuando se tenga la informacion de ventas, se podra hacer un filtro para mostrar los mas vendidos en el home.
+*/
 if (contenedorDestacados) {
 
-    // Selección variada para el Home (una por categoría distinta).
-    const codigosDestacados = ['HM001', 'PT001', 'HE001', 'JA001'];
-
     const productosDestacados = [];
+    const categoriasDestacadas = [];
 
-    for (const codigo of codigosDestacados) {
+    for (const producto of productos) {
 
-        const producto = buscarProductoPorCodigo(codigo);
+        if (!categoriasDestacadas.includes(producto.categoria)) {
 
-        if (producto) {
-
+            categoriasDestacadas.push(producto.categoria);
             productosDestacados.push(producto);
 
         }
