@@ -161,7 +161,7 @@ function mostrarProducto() {
 
     }
 
-    document.title = `${producto.nombre} | Ferretería Los Maestros`;
+    document.title = `${producto.nombre} | Ferretería los Maestros`;
 
 }
 
