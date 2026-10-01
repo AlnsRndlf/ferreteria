@@ -1,7 +1,7 @@
 // ========================================
 // CATALOGO DE PRODUCTOS
 // Datos reales tomados del catalogo de
-// Ferreteria Los Maestros (85 productos).
+// Ferreteria Los Hermanos (85 productos).
 // ========================================
 
 const productos = [
