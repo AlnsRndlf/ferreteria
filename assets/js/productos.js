@@ -121,6 +121,33 @@ function mostrarProductos(lista, contenedor) {
 }
 
 
+/*
+    los productos son 1 por categoria
+    por falta de metricas
+    ya dsp sera segun mas vendidos o algo
+*/
+
+function obtenerProductosDestacados() {
+
+    const categoriasIncluidas = [];
+    const destacados = [];
+
+    for (const producto of productos) {
+
+        if (!categoriasIncluidas.includes(producto.categoria)) {
+
+            categoriasIncluidas.push(producto.categoria);
+            destacados.push(producto);
+
+        }
+
+    }
+
+    return destacados;
+
+}
+
+
 // ========================================
 // RENDERIZAR SEGÚN LA PÁGINA ACTUAL
 // ========================================
@@ -129,24 +156,7 @@ const contenedorDestacados = document.getElementById('lista-destacados');
 
 if (contenedorDestacados) {
 
-    // Selección variada para el Home (una por categoría distinta).
-    const codigosDestacados = ['HM001', 'PT001', 'HE001', 'JA001'];
-
-    const productosDestacados = [];
-
-    for (const codigo of codigosDestacados) {
-
-        const producto = buscarProductoPorCodigo(codigo);
-
-        if (producto) {
-
-            productosDestacados.push(producto);
-
-        }
-
-    }
-
-    mostrarProductos(productosDestacados, contenedorDestacados);
+    mostrarProductos(obtenerProductosDestacados(), contenedorDestacados);
 
 }
 
