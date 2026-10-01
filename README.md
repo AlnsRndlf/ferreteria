@@ -1,4 +1,4 @@
-# Ferretería los Hermanos
+# Ferreteria los Hermanos
 somos hermanos que fundamos una ferretería, y le dimos con el palo al gato
 ## Referencias y Fuentes Multimedia
 Todas las imagenes utilizadas en este proyecto son empleadas exclusivamente con fines academicos y demostrativos para el curso DSY1104.
