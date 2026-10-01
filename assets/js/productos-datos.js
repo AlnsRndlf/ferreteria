@@ -87,7 +87,7 @@ const productos = [
         precio: 1500,
         stock: 60,
         stockMinimo: 20,
-        imagen: null
+        imagen: 'assets/img/Ripio 25 kg, de la marca Granel.png'
     },
 
     {
@@ -101,7 +101,7 @@ const productos = [
         precio: 380,
         stock: 500,
         stockMinimo: 100,
-        imagen: null
+        imagen: 'assets/img/Ladrillo fiscal N°5, de la marca Local.png'
     },
 
     {
@@ -115,7 +115,7 @@ const productos = [
         precio: 550,
         stock: 300,
         stockMinimo: 80,
-        imagen: null
+        imagen: 'assets/img/Ladrillo prensado 6x14x29 cm, de la marca Melón.png'
     },
 
     {
@@ -129,7 +129,7 @@ const productos = [
         precio: 1200,
         stock: 200,
         stockMinimo: 50,
-        imagen: null
+        imagen: 'assets/img/Bloque de hormigón 19x19x39 cm, de la marca Volcán.png'
     },
 
     {
@@ -143,7 +143,7 @@ const productos = [
         precio: 1690,
         stock: 100,
         stockMinimo: 30,
-        imagen: null
+        imagen: 'assets/img/Bloque liviano 10x20x40 cm, de la marca Ytong.png'
     },
 
     {
@@ -171,7 +171,7 @@ const productos = [
         precio: 12990,
         stock: 30,
         stockMinimo: 8,
-        imagen: null
+        imagen: 'assets/img/Pintura látex interior 4 litros (varios col.), de la marca Sipa.png'
     },
 
     {
@@ -185,7 +185,7 @@ const productos = [
         precio: 13990,
         stock: 25,
         stockMinimo: 8,
-        imagen: null
+        imagen: 'assets/img/Pintura látex exterior 1 galón blanco, de la marca Kömex.png'
     },
 
     {
@@ -199,7 +199,7 @@ const productos = [
         precio: 4290,
         stock: 50,
         stockMinimo: 15,
-        imagen: null
+        imagen: 'assets/img/Esmalte sintético.png'
     },
 
     {
@@ -213,7 +213,7 @@ const productos = [
         precio: 9490,
         stock: 30,
         stockMinimo: 10,
-        imagen: null
+        imagen: 'assets/img/Esmalte sintético 1 litro.png'
     },
 
     {
@@ -227,7 +227,7 @@ const productos = [
         precio: 17990,
         stock: 15,
         stockMinimo: 5,
-        imagen: null
+        imagen: 'assets/img/Pintura antihumedad 1 galón blanco.png'
     },
 
     {
@@ -241,7 +241,7 @@ const productos = [
         precio: 3990,
         stock: 30,
         stockMinimo: 10,
-        imagen: null
+        imagen: 'assets/img/Rodillo lana 23 cm con mango.png'
     },
 
     {
@@ -255,7 +255,7 @@ const productos = [
         precio: 1690,
         stock: 40,
         stockMinimo: 10,
-        imagen: null
+        imagen: 'assets/img/Brocha cerda natural 3.png'
     },
 
     {
@@ -269,7 +269,7 @@ const productos = [
         precio: 2490,
         stock: 60,
         stockMinimo: 20,
-        imagen: null
+        imagen: 'assets/img/Cinta de enmascarar 24mm x 50m.png'
     },
 
     {
@@ -297,7 +297,7 @@ const productos = [
         precio: 7290,
         stock: 15,
         stockMinimo: 5,
-        imagen: null
+        imagen: 'assets/img/Alicate universal 8.png'
     },
 
     {
@@ -311,7 +311,7 @@ const productos = [
         precio: 1990,
         stock: 30,
         stockMinimo: 10,
-        imagen: null
+        imagen: 'assets/img/Destornillador plano 6x100mm.png'
     },
 
     {
@@ -325,7 +325,7 @@ const productos = [
         precio: 1990,
         stock: 30,
         stockMinimo: 10,
-        imagen: null
+        imagen: 'assets/img/Destornillador Phillips PH2 6x100mm.png'
     },
 
     {
@@ -339,7 +339,7 @@ const productos = [
         precio: 8490,
         stock: 12,
         stockMinimo: 4,
-        imagen: null
+        imagen: 'assets/img/Llave ajustable 10.png'
     },
 
     {
@@ -353,7 +353,7 @@ const productos = [
         precio: 5490,
         stock: 15,
         stockMinimo: 5,
-        imagen: null
+        imagen: 'assets/img/Juego llaves hexagonales métrico x9.png'
     },
 
     {
@@ -367,7 +367,7 @@ const productos = [
         precio: 9490,
         stock: 10,
         stockMinimo: 3,
-        imagen: null
+        imagen: 'assets/img/Serrucho.png'
     },
 
     {
@@ -381,7 +381,7 @@ const productos = [
         precio: 10490,
         stock: 8,
         stockMinimo: 3,
-        imagen: null
+        imagen: 'assets/img/Nivel de burbuja 60 cm.png'
     },
 
     {
@@ -395,7 +395,7 @@ const productos = [
         precio: 4290,
         stock: 25,
         stockMinimo: 8,
-        imagen: null
+        imagen: 'assets/img/Metro de tela 5m, de la marca Stanley.png'
     },
 
     {
@@ -409,7 +409,7 @@ const productos = [
         precio: 6490,
         stock: 20,
         stockMinimo: 6,
-        imagen: null
+        imagen: 'assets/img/Cinta métrica 8m autoblocante.png'
     },
 
     {
@@ -423,7 +423,7 @@ const productos = [
         precio: 79990,
         stock: 8,
         stockMinimo: 2,
-        imagen: null
+        imagen: 'assets/img/Taladro percutor 650W 13mm.png'
     },
 
     {
@@ -437,7 +437,7 @@ const productos = [
         precio: 104990,
         stock: 5,
         stockMinimo: 2,
-        imagen: null
+        imagen: 'assets/img/Atornillador inalámbrico 12V (kit).png'
     },
 
     {
@@ -451,7 +451,7 @@ const productos = [
         precio: 54990,
         stock: 8,
         stockMinimo: 2,
-        imagen: null
+        imagen: 'assets/img/Amoladora angular.png'
     },
 
     {
@@ -465,7 +465,7 @@ const productos = [
         precio: 72990,
         stock: 4,
         stockMinimo: 1,
-        imagen: null
+        imagen: 'assets/img/Sierra circular.png'
     },
 
     {
@@ -479,7 +479,7 @@ const productos = [
         precio: 34990,
         stock: 6,
         stockMinimo: 2,
-        imagen: null
+        imagen: 'assets/img/Lijadora orbital.png'
     },
 
     {
@@ -493,7 +493,7 @@ const productos = [
         precio: 42990,
         stock: 4,
         stockMinimo: 1,
-        imagen: null
+        imagen: 'assets/img/Caladora.png'
     },
 
     {
@@ -507,7 +507,7 @@ const productos = [
         precio: 5490,
         stock: 30,
         stockMinimo: 10,
-        imagen: null
+        imagen: 'assets/img/Cañería PVC.png'
     },
 
     {
@@ -521,7 +521,7 @@ const productos = [
         precio: 7490,
         stock: 25,
         stockMinimo: 8,
-        imagen: null
+        imagen: 'assets/img/Cañería PVC3.png'
     },
 
     {
@@ -535,7 +535,7 @@ const productos = [
         precio: 17990,
         stock: 15,
         stockMinimo: 5,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -549,7 +549,7 @@ const productos = [
         precio: 390,
         stock: 100,
         stockMinimo: 30,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -563,7 +563,7 @@ const productos = [
         precio: 450,
         stock: 80,
         stockMinimo: 25,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -577,7 +577,7 @@ const productos = [
         precio: 320,
         stock: 80,
         stockMinimo: 25,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -591,7 +591,7 @@ const productos = [
         precio: 3490,
         stock: 30,
         stockMinimo: 10,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -605,7 +605,7 @@ const productos = [
         precio: 4990,
         stock: 20,
         stockMinimo: 8,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -619,7 +619,7 @@ const productos = [
         precio: 22990,
         stock: 10,
         stockMinimo: 3,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -633,7 +633,7 @@ const productos = [
         precio: 28990,
         stock: 8,
         stockMinimo: 2,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -647,7 +647,7 @@ const productos = [
         precio: 790,
         stock: 80,
         stockMinimo: 25,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -661,7 +661,7 @@ const productos = [
         precio: 5490,
         stock: 25,
         stockMinimo: 8,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -675,7 +675,7 @@ const productos = [
         precio: 590,
         stock: 100,
         stockMinimo: 30,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -689,7 +689,7 @@ const productos = [
         precio: 790,
         stock: 100,
         stockMinimo: 30,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -703,7 +703,7 @@ const productos = [
         precio: 990,
         stock: 80,
         stockMinimo: 25,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -717,7 +717,7 @@ const productos = [
         precio: 3690,
         stock: 50,
         stockMinimo: 15,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -731,7 +731,7 @@ const productos = [
         precio: 5490,
         stock: 40,
         stockMinimo: 12,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -745,7 +745,7 @@ const productos = [
         precio: 3190,
         stock: 50,
         stockMinimo: 15,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -759,7 +759,7 @@ const productos = [
         precio: 4290,
         stock: 35,
         stockMinimo: 10,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -773,7 +773,7 @@ const productos = [
         precio: 22990,
         stock: 8,
         stockMinimo: 2,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -787,7 +787,7 @@ const productos = [
         precio: 6490,
         stock: 20,
         stockMinimo: 5,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -801,7 +801,7 @@ const productos = [
         precio: 6990,
         stock: 20,
         stockMinimo: 5,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -815,7 +815,7 @@ const productos = [
         precio: 3990,
         stock: 60,
         stockMinimo: 20,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -829,7 +829,7 @@ const productos = [
         precio: 4490,
         stock: 50,
         stockMinimo: 15,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -843,7 +843,7 @@ const productos = [
         precio: 11490,
         stock: 20,
         stockMinimo: 6,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -857,7 +857,7 @@ const productos = [
         precio: 2990,
         stock: 40,
         stockMinimo: 12,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -871,7 +871,7 @@ const productos = [
         precio: 2490,
         stock: 40,
         stockMinimo: 12,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -885,7 +885,7 @@ const productos = [
         precio: 3490,
         stock: 30,
         stockMinimo: 10,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -899,7 +899,7 @@ const productos = [
         precio: 3190,
         stock: 35,
         stockMinimo: 10,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -913,7 +913,7 @@ const productos = [
         precio: 2890,
         stock: 30,
         stockMinimo: 10,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -927,7 +927,7 @@ const productos = [
         precio: 290,
         stock: 200,
         stockMinimo: 50,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -941,7 +941,7 @@ const productos = [
         precio: 990,
         stock: 60,
         stockMinimo: 15,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -955,7 +955,7 @@ const productos = [
         precio: 15990,
         stock: 8,
         stockMinimo: 2,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -969,7 +969,7 @@ const productos = [
         precio: 4290,
         stock: 40,
         stockMinimo: 12,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -983,7 +983,7 @@ const productos = [
         precio: 7490,
         stock: 30,
         stockMinimo: 10,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -997,7 +997,7 @@ const productos = [
         precio: 34990,
         stock: 20,
         stockMinimo: 5,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -1011,7 +1011,7 @@ const productos = [
         precio: 27990,
         stock: 15,
         stockMinimo: 4,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -1025,7 +1025,7 @@ const productos = [
         precio: 18990,
         stock: 18,
         stockMinimo: 5,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -1039,7 +1039,7 @@ const productos = [
         precio: 8990,
         stock: 30,
         stockMinimo: 8,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -1053,7 +1053,7 @@ const productos = [
         precio: 11990,
         stock: 15,
         stockMinimo: 4,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -1067,7 +1067,7 @@ const productos = [
         precio: 6990,
         stock: 15,
         stockMinimo: 5,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -1081,7 +1081,7 @@ const productos = [
         precio: 3690,
         stock: 20,
         stockMinimo: 6,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -1095,7 +1095,7 @@ const productos = [
         precio: 2490,
         stock: 25,
         stockMinimo: 8,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -1109,7 +1109,7 @@ const productos = [
         precio: 10990,
         stock: 10,
         stockMinimo: 3,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -1123,7 +1123,7 @@ const productos = [
         precio: 34990,
         stock: 4,
         stockMinimo: 1,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -1137,7 +1137,7 @@ const productos = [
         precio: 22990,
         stock: 6,
         stockMinimo: 2,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -1151,7 +1151,7 @@ const productos = [
         precio: 28990,
         stock: 5,
         stockMinimo: 2,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -1165,7 +1165,7 @@ const productos = [
         precio: 5490,
         stock: 10,
         stockMinimo: 3,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -1179,7 +1179,7 @@ const productos = [
         precio: 10990,
         stock: 8,
         stockMinimo: 2,
-        imagen: null
+        imagen: 'assets/img/'
     },
 
     {
@@ -1193,7 +1193,7 @@ const productos = [
         precio: 9490,
         stock: 6,
         stockMinimo: 2,
-        imagen: null
+        imagen: 'assets/img/'
     }
 
 
