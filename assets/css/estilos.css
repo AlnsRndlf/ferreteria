@@ -1529,3 +1529,81 @@ main {
     outline: none;
     border-color: var(--color-primario);
 }
+
+/* ========================================
+   TABLAS SEMÁNTICAS (Carrito de Compras)
+   ======================================== */
+.encabezado-pagina {
+    margin-bottom: 2rem;
+}
+
+/* Contenedor que permite Scroll horizontal en móviles sin romper la página */
+.tabla-contenedor {
+    max-width: 100%;
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-superficie);
+    min-width: 600px; /* Asegura que la tabla no se aplaste en celulares */
+}
+
+caption {
+    padding: 1rem;
+    font-weight: bold;
+    text-align: left;
+    color: var(--color-primario-oscuro);
+    border-bottom: 2px solid var(--color-primario);
+}
+
+th, td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-borde);
+    text-align: left;
+    color: var(--color-texto-suave);
+}
+
+thead th {
+    color: #ffffff;
+    background-color: var(--color-primario-oscuro);
+    font-weight: 700;
+    border-bottom: none;
+}
+
+/* Destaca el identificador principal de la fila (El código) */
+tbody th[scope="row"] {
+    color: var(--color-primario-oscuro);
+    font-weight: 700;
+}
+
+/* Pie de tabla para los totales */
+tfoot th, tfoot td {
+    background-color: #f2f2f2;
+    color: var(--color-primario-oscuro);
+    font-size: 1.1rem;
+}
+
+.acciones-carrito {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.boton-secundario {
+    background-color: #ffffff;
+    color: #a91e23;
+    border: 2px solid #a91e23;
+}
+
+.boton-secundario:hover {
+    background-color: #a91e23;
+    color: #ffffff;
+}

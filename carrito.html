@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Carrito de compras de Ferretería los Hermanos.">
+    <title>Carrito de Compras | Ferretería los Hermanos</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
+    <script src="assets/js/menu.js" defer></script>
+</head>
+<body>
+    <!-- ========================================
+         HEADER (El mismo de tus otras páginas)
+         ======================================== -->
+    <header class="cabecera-sitio">
+        <div class="cabecera-top">
+            <div class="logo">
+                <span class="logo-icono"></span>
+                <strong>Ferreteria los Hermanos</strong>
+            </div>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+                &#9776;
+            </button>
+        </div>
+        <nav class="nav-principal" id="menu-principal" aria-label="Navegación principal">
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="blogs.html">Blog</a></li>
+            </ul>
+        </nav>
+        <div class="carrito">
+            <a href="carrito.html" aria-current="page" aria-label="Ver carrito de compras">
+                🛒 Carrito
+            </a>
+        </div>
+    </header>
+
+    <!-- ========================================
+         CONTENIDO PRINCIPAL
+         ======================================== -->
+    <main id="contenido-principal">
+        <nav class="ruta-navegacion" aria-label="Ruta de navegación">
+            <a href="index.html">Inicio</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Carrito de compras</span>
+        </nav>
+
+        <header class="encabezado-pagina">
+            <h1 class="centrado" id="titulo-carrito">Tu Carrito de Compras</h1>
+            <p class="centrado subtitulo-productos">Revisa los materiales y herramientas seleccionados antes de procesar tu cotización o pedido.</p>
+        </header>
+
+        <section aria-labelledby="titulo-carrito">
+            <!-- Contenedor accesible para scroll horizontal en móviles (Guía 3) -->
+            <div class="tabla-contenedor" tabindex="0" aria-label="Tabla de productos en el carrito desplazable horizontalmente">
+                <table>
+                    <caption>Detalle de productos agregados al carrito</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Código</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Precio Unit.</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- scope="row" relaciona el dato con toda su fila -->
+                            <th scope="row">MC001</th>
+                            <td>Cemento Polpaico gris 25 kg</td>
+                            <td>$5.990</td>
+                            <td>10</td>
+                            <td>$59.900</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">HM001</th>
+                            <td>Martillo carpintero 500g</td>
+                            <td>$7.990</td>
+                            <td>2</td>
+                            <td>$15.980</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th scope="row" colspan="4" style="text-align: right;">Total Estimado:</th>
+                            <td><strong>$75.880</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <!-- Botones de acción usando Flexbox -->
+            <div class="acciones-carrito">
+                <a href="productos.html" class="boton boton-secundario">Seguir comprando</a>
+                <a href="#" class="boton">Procesar pedido</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================
+         FOOTER (El mismo de tus otras páginas)
+         ======================================== -->
+    <footer class="pie-sitio">
+        <div class="informacion-pie">
+            <p>Ferreteria los Hermanos.</p>
+            <nav aria-label="Categorías"></nav>
+        </div>
+        <div class="newsletter">
+            <p>Suscríbete para recibir todas las novedades y promociones.</p>
+            <form action="#" method="post">
+                <label for="correo-newsletter" class="visualmente-oculto">
+                    Correo electrónico
+                </label>
+                <input type="email" id="correo-newsletter" name="correo" placeholder="email@ejemplo.com" autocomplete="email" required>
+                <button type="submit">Suscribirme<br>(próximamente)</button>
+            </form>
+        </div>
+    </footer>
+</body>
+</html>
