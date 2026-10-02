@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conoce la historia de Ferretería los Hermanos y contáctanos.">
+    <title>Blog y Contacto | Ferretería los Hermanos</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
+    <script src="assets/js/menu.js" defer></script>
+</head>
+<body>
+
+    <header class="cabecera-sitio">
+        <div class="cabecera-top">
+            <div class="logo">
+                <span class="logo-icono"></span>
+                <strong>Ferreteria los Hermanos</strong>
+            </div>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+                &#9776;
+            </button>
+        </div>
+        <nav class="nav-principal" id="menu-principal" aria-label="Navegación principal">
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="blog.html" aria-current="page">Blog</a></li>
+            </ul>
+        </nav>
+        <div class="carrito">
+            <a href="carrito.html" aria-label="Ver carrito de compras">
+                🛒 Carrito
+            </a>
+        </div>
+    </header>
+
+    <main id="contenido-principal">
+        <nav class="ruta-navegacion" aria-label="Ruta de navegación">
+            <a href="index.html">Inicio</a>
+            <span aria-hidden="true"> / </span>
+            <span aria-current="page">Blog y Nosotros</span>
+        </nav>
+
+        <header class="encabezado-pagina">
+            <h1 class="centrado" id="titulo-blog">Nuestra Historia</h1>
+            <p class="centrado subtitulo-productos">Más de 22 años apoyando la construcción en La Serena y la Región de Coquimbo.</p>
+        </header>
+
+        <section class="seccion-nosotros" aria-labelledby="titulo-blog">
+            <article class="tarjeta-nosotros">
+                <h2>¿Quiénes Somos?</h2>
+                <p><strong>Ferretería Los Maestros (Hermanos)</strong> es un negocio familiar atendido por sus propios dueños. Durante más de dos décadas, nos hemos dedicado a proveer los mejores materiales de construcción, herramientas y artículos de gasfitería a particulares y contratistas.</p>
+                <p>Nuestra misión es que nunca te falte una herramienta en tu obra. ¡Le damos con el palo al gato en calidad y precio!</p>
+                
+                <!-- Imagen correctamente insertada -->
+                <figure class="imagen-nosotros">
+                    <img src="assets/img/hermanos.png" alt="Fachada e interior de la Ferretería Los Hermanos">
+                    <figcaption>Nuestro equipo trabajando día a día en La Serena.</figcaption>
+                </figure>
+            </article>
+
+            <aside class="multimedia-nosotros" aria-labelledby="titulo-video">
+                <h2 id="titulo-video">Conoce nuestras herramientas</h2>
+                <p>Te mostramos un breve recorrido por el tipo de herramientas profesionales que encontrarás en nuestro catálogo.</p>
+                <!-- Video Embebido accesible -->
+                <div class="contenedor-video">
+                    <iframe 
+                        src="https://www.youtube.com/watch?v=aPJQdndAil8" 
+                        title="Video demostrativo de herramientas de ferretería" 
+                        loading="lazy" 
+                        allow="accelerometer; autoplay; encrypted-media; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </aside>
+        </section>
+
+        <!-- SECCIÓN CONTACTO Y MAPA SIMULADO -->
+        <section class="seccion-contacto" aria-labelledby="titulo-contacto">
+            <h2 id="titulo-contacto" class="centrado">Contáctanos</h2>
+            
+            <div class="grilla-contacto">
+                <!-- Formulario HTML5 Semántico (Cumple IE1.1.1 Formularios interactivos) -->
+                <form class="formulario-contacto" action="#" method="get">
+                    <fieldset>
+                        <legend>Envíanos tus dudas o cotizaciones</legend>
+                        
+                        <div class="campo-formulario">
+                            <label for="nombre-contacto">Nombre completo</label>
+                            <input type="text" id="nombre-contacto" name="nombre" placeholder="Ej. Juan Pérez" required>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="correo-contacto">Correo electrónico</label>
+                            <input type="email" id="correo-contacto" name="correo" autocomplete="email" placeholder="ejemplo@correo.cl" required>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="mensaje">Mensaje o Consulta</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" minlength="10" placeholder="Escribe aquí tu consulta de stock..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="boton">Enviar Mensaje</button>
+                    </fieldset>
+                </form>
+
+                <!-- Mapa Simulado / Información -->
+                <article class="info-contacto tarjeta">
+                    <h3>Ubicación</h3>
+                    <p>📍 Av. Principal 1234, La Serena, Región de Coquimbo.</p>
+                    <p>📞 Teléfono: +56 9 1234 5678</p>
+                    <p>✉️ Correo: contacto@loshermanos.cl</p>
+                    <div class="marcador-mapa">
+                        <!-- Aquí a futuro irá Leaflet/Google Maps. Por ahora simulamos con CSS/imagen -->
+                        <p>🗺️ Mapa Interactivo (Próximamente)</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="pie-sitio">
+        <div class="informacion-pie">
+            <p>Ferreteria los Hermanos.</p>
+            <nav aria-label="Categorías"></nav>
+        </div>
+        <div class="newsletter">
+            <p>Suscríbete para recibir todas las novedades y promociones.</p>
+            <form action="#" method="post">
+                <label for="correo-newsletter" class="visualmente-oculto">Correo electrónico</label>
+                <input type="email" id="correo-newsletter" name="correo" placeholder="email@ejemplo.com" autocomplete="email" required>
+                <button type="submit">Suscribirme<br>(próximamente)</button>
+            </form>
+        </div>
+    </footer>
+</body>
+</html>
