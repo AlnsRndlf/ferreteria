@@ -535,7 +535,7 @@ const productos = [
         precio: 17990,
         stock: 15,
         stockMinimo: 5,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Cañería cobre.png'
     },
 
     {
@@ -549,7 +549,7 @@ const productos = [
         precio: 390,
         stock: 100,
         stockMinimo: 30,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Codo PVC.png'
     },
 
     {
@@ -563,7 +563,7 @@ const productos = [
         precio: 450,
         stock: 80,
         stockMinimo: 25,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Te PVC.png'
     },
 
     {
@@ -577,7 +577,7 @@ const productos = [
         precio: 320,
         stock: 80,
         stockMinimo: 25,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Unión doble PVC.png'
     },
 
     {
@@ -591,7 +591,7 @@ const productos = [
         precio: 3490,
         stock: 30,
         stockMinimo: 10,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Llave de paso esfera.png'
     },
 
     {
@@ -605,7 +605,7 @@ const productos = [
         precio: 4990,
         stock: 20,
         stockMinimo: 8,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Llave de paso esfera3.png'
     },
 
     {
@@ -619,7 +619,7 @@ const productos = [
         precio: 22990,
         stock: 10,
         stockMinimo: 3,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Grifería lavamanos monocomando cromo.png'
     },
 
     {
@@ -633,7 +633,7 @@ const productos = [
         precio: 28990,
         stock: 8,
         stockMinimo: 2,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Grifería cocina monocomando cuello alto.png'
     },
 
     {
@@ -647,7 +647,7 @@ const productos = [
         precio: 790,
         stock: 80,
         stockMinimo: 25,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Teflón.png'
     },
 
     {
@@ -661,7 +661,7 @@ const productos = [
         precio: 5490,
         stock: 25,
         stockMinimo: 8,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Silicona transparente 280ml.png'
     },
 
     {
@@ -675,7 +675,7 @@ const productos = [
         precio: 590,
         stock: 100,
         stockMinimo: 30,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Cable unipolar.png'
     },
 
     {
@@ -689,7 +689,7 @@ const productos = [
         precio: 790,
         stock: 100,
         stockMinimo: 30,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Cable unipolar2.png'
     },
 
     {
@@ -703,7 +703,7 @@ const productos = [
         precio: 990,
         stock: 80,
         stockMinimo: 25,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Cable dúplex paralelo.png'
     },
 
     {
@@ -717,7 +717,7 @@ const productos = [
         precio: 3690,
         stock: 50,
         stockMinimo: 15,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Enchufe empotrar tierra.png'
     },
 
     {
@@ -731,7 +731,7 @@ const productos = [
         precio: 5490,
         stock: 40,
         stockMinimo: 12,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Enchufe doble empotrar.png'
     },
 
     {
@@ -745,7 +745,7 @@ const productos = [
         precio: 3190,
         stock: 50,
         stockMinimo: 15,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Interruptor simple empotrar.png'
     },
 
     {
@@ -759,7 +759,7 @@ const productos = [
         precio: 4290,
         stock: 35,
         stockMinimo: 10,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Interruptor doble empotrar.png'
     },
 
     {
@@ -773,7 +773,7 @@ const productos = [
         precio: 22990,
         stock: 8,
         stockMinimo: 2,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Tablero eléctrico 4 espacios DIN.png'
     },
 
     {
@@ -787,7 +787,7 @@ const productos = [
         precio: 6490,
         stock: 20,
         stockMinimo: 5,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Disyuntor termomagnético 16A unipolar.png'
     },
 
     {
@@ -801,7 +801,7 @@ const productos = [
         precio: 6990,
         stock: 20,
         stockMinimo: 5,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Disyuntor termomagnético 25A unipolar.png'
     },
 
     {
@@ -815,7 +815,7 @@ const productos = [
         precio: 3990,
         stock: 60,
         stockMinimo: 20,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Ampolleta LED 9W E27 luz fría.png'
     },
 
     {
@@ -829,7 +829,7 @@ const productos = [
         precio: 4490,
         stock: 50,
         stockMinimo: 15,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Ampolleta LED 12W E27 luz cálida.png'
     },
 
     {
@@ -843,7 +843,7 @@ const productos = [
         precio: 11490,
         stock: 20,
         stockMinimo: 6,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Panel LED empotrar 18W 22cm.png'
     },
 
     {
@@ -857,7 +857,7 @@ const productos = [
         precio: 2990,
         stock: 40,
         stockMinimo: 12,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Tornillo autoperf. 8x1.png'
     },
 
     {
@@ -871,7 +871,7 @@ const productos = [
         precio: 2490,
         stock: 40,
         stockMinimo: 12,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Tornillo madera 4x40mm.png'
     },
 
     {
@@ -885,7 +885,7 @@ const productos = [
         precio: 3490,
         stock: 30,
         stockMinimo: 10,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Tornillo volcanita 3.5x25mm.png'
     },
 
     {
@@ -899,7 +899,7 @@ const productos = [
         precio: 3190,
         stock: 35,
         stockMinimo: 10,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Taco fisher S6 bolsa.png'
     },
 
     {
@@ -913,7 +913,7 @@ const productos = [
         precio: 2890,
         stock: 30,
         stockMinimo: 10,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Taco fisher S8 bolsa.png'
     },
 
     {
@@ -927,7 +927,7 @@ const productos = [
         precio: 290,
         stock: 200,
         stockMinimo: 50,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Perno hex. tuerca y golilla.png'
     },
 
     {
@@ -941,7 +941,7 @@ const productos = [
         precio: 990,
         stock: 60,
         stockMinimo: 15,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Perno de anclaje 10x100mm.png'
     },
 
     {
@@ -955,7 +955,7 @@ const productos = [
         precio: 15990,
         stock: 8,
         stockMinimo: 2,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Anclaje químico epoxi 300ml.png'
     },
 
     {
@@ -969,7 +969,7 @@ const productos = [
         precio: 4290,
         stock: 40,
         stockMinimo: 12,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Pino cepillado 1x3 x 3m.png'
     },
 
     {
@@ -983,7 +983,7 @@ const productos = [
         precio: 7490,
         stock: 30,
         stockMinimo: 10,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Pino cepillado 2x4 x 3m.png'
     },
 
     {
@@ -997,7 +997,7 @@ const productos = [
         precio: 34990,
         stock: 20,
         stockMinimo: 5,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Terciado estructural 18mm 1.22x2.44m.png'
     },
 
     {
@@ -1011,7 +1011,7 @@ const productos = [
         precio: 27990,
         stock: 15,
         stockMinimo: 4,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/MDF 15mm 1.22x2.44m.png'
     },
 
     {
@@ -1025,7 +1025,7 @@ const productos = [
         precio: 18990,
         stock: 18,
         stockMinimo: 5,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/OSB 9mm 1.22x2.44m.png'
     },
 
     {
@@ -1039,7 +1039,7 @@ const productos = [
         precio: 8990,
         stock: 30,
         stockMinimo: 8,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Volcanita estándar 10mm 1.2x2.4m.png'
     },
 
     {
@@ -1053,7 +1053,7 @@ const productos = [
         precio: 11990,
         stock: 15,
         stockMinimo: 4,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Volcanita resistente humedad 10mm.png'
     },
 
     {
@@ -1067,7 +1067,7 @@ const productos = [
         precio: 6990,
         stock: 15,
         stockMinimo: 5,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Casco seguridad blanco.png'
     },
 
     {
@@ -1081,7 +1081,7 @@ const productos = [
         precio: 3690,
         stock: 20,
         stockMinimo: 6,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Guantes de cuero talla L.png'
     },
 
     {
@@ -1095,7 +1095,7 @@ const productos = [
         precio: 2490,
         stock: 25,
         stockMinimo: 8,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Antiparras de seguridad clear.png'
     },
 
     {
@@ -1109,7 +1109,7 @@ const productos = [
         precio: 10990,
         stock: 10,
         stockMinimo: 3,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Mascarilla respirador N95.png'
     },
 
     {
@@ -1123,7 +1123,7 @@ const productos = [
         precio: 34990,
         stock: 4,
         stockMinimo: 1,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Arnés de seguridad 1 punto.png'
     },
 
     {
@@ -1137,7 +1137,7 @@ const productos = [
         precio: 22990,
         stock: 6,
         stockMinimo: 2,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Manguera riego 25m.png'
     },
 
     {
@@ -1151,7 +1151,7 @@ const productos = [
         precio: 28990,
         stock: 5,
         stockMinimo: 2,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Manguera expandible 30m.png'
     },
 
     {
@@ -1165,7 +1165,7 @@ const productos = [
         precio: 5490,
         stock: 10,
         stockMinimo: 3,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Pistola de riego 8 modos.png'
     },
 
     {
@@ -1179,7 +1179,7 @@ const productos = [
         precio: 10990,
         stock: 8,
         stockMinimo: 2,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Pala punta redonda con mango.png'
     },
 
     {
@@ -1193,7 +1193,7 @@ const productos = [
         precio: 9490,
         stock: 6,
         stockMinimo: 2,
-        imagen: 'assets/img/'
+        imagen: 'assets/img/Rastrillo 16 dientes con mango.png'
     }
 
 
