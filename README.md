@@ -10,3 +10,4 @@ Imagen Nosotros
 https://www.facebook.com/CONSTRUCCIONESDECASASENDRYWALL/posts/construcciones-hermanos-valenzuela-les-desea-un-feliz-y-bendecido-dia-del-trabaj/1486922833228787/
 imagen pintura sipa 
 https://www.ferreteriajaramillo.cl/pintura-latex-1-galon-sipa-blanco-3779-373444/p
+Todas las imagenes ocupadas son solo de uso academico.
