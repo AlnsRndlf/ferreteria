@@ -2,7 +2,7 @@
 // REGIONES Y COMUNAS DE CHILE
 // ========================================
 
-const regionesComunas = [
+export const regionesComunas = [
 
     // ========================================
     // REGIÓN DE ARICA Y PARINACOTA
