@@ -1,10 +1,10 @@
-// ========================================
-// CATALOGO DE PRODUCTOS
-// Datos reales tomados del catalogo de
-// Ferreteria Los Hermanos (85 productos).
-// ========================================
+import { guardarDatos, leerDatos } from "../utils/persistencia";
+import { esStockCritico, estaSinStock } from "../utils/stock";
+import { tieneOferta } from "../utils/precio";
 
-const productos = [
+const CLAVE_PRODUCTOS = "productos";
+
+const productosBase = [
 
     {
         codigo: 'MC001',
@@ -17,7 +17,7 @@ const productos = [
         precio: 5990,
         stock: 80,
         stockMinimo: 20,
-        imagen: 'assets/img/Cemento Polpaico gris 25 kg.png'
+        imagen: '/img/productos/Cemento Polpaico gris 25 kg.png'
     },
 
     {
@@ -31,7 +31,7 @@ const productos = [
         precio: 7490,
         stock: 40,
         stockMinimo: 10,
-        imagen: 'assets/img/Cemento Melón blanco 25 kg.jpg'
+        imagen: '/img/productos/Cemento Melón blanco 25 kg.jpg'
     },
 
     {
@@ -45,7 +45,7 @@ const productos = [
         precio: 5200,
         stock: 50,
         stockMinimo: 15,
-        imagen: 'assets/img/Mortero cola cerámica 25 kg.png'
+        imagen: '/img/productos/Mortero cola cerámica 25 kg.png'
     },
 
     {
@@ -59,7 +59,7 @@ const productos = [
         precio: 6490,
         stock: 30,
         stockMinimo: 10,
-        imagen: 'assets/img/Mortero nivelador piso 25 kg.png'
+        imagen: '/img/productos/Mortero nivelador piso 25 kg.png'
     },
 
     {
@@ -73,7 +73,7 @@ const productos = [
         precio: 1800,
         stock: 60,
         stockMinimo: 20,
-        imagen: 'assets/img/Arena fina construccion 25 kg.png'
+        imagen: '/img/productos/Arena fina construccion 25 kg.png'
     },
 
     {
@@ -87,7 +87,7 @@ const productos = [
         precio: 1500,
         stock: 60,
         stockMinimo: 20,
-        imagen: 'assets/img/Ripio 25 kg, de la marca Granel.png'
+        imagen: '/img/productos/Ripio 25 kg, de la marca Granel.png'
     },
 
     {
@@ -101,7 +101,7 @@ const productos = [
         precio: 380,
         stock: 500,
         stockMinimo: 100,
-        imagen: 'assets/img/Ladrillo fiscal N°5, de la marca Local.png'
+        imagen: '/img/productos/Ladrillo fiscal N°5, de la marca Local.png'
     },
 
     {
@@ -115,7 +115,7 @@ const productos = [
         precio: 550,
         stock: 300,
         stockMinimo: 80,
-        imagen: 'assets/img/Ladrillo prensado 6x14x29 cm, de la marca Melón.png'
+        imagen: '/img/productos/Ladrillo prensado 6x14x29 cm, de la marca Melón.png'
     },
 
     {
@@ -129,7 +129,7 @@ const productos = [
         precio: 1200,
         stock: 200,
         stockMinimo: 50,
-        imagen: 'assets/img/Bloque de hormigón 19x19x39 cm, de la marca Volcán.png'
+        imagen: '/img/productos/Bloque de hormigón 19x19x39 cm, de la marca Volcán.png'
     },
 
     {
@@ -143,7 +143,7 @@ const productos = [
         precio: 1690,
         stock: 100,
         stockMinimo: 30,
-        imagen: 'assets/img/Bloque liviano 10x20x40 cm, de la marca Ytong.png'
+        imagen: '/img/productos/Bloque liviano 10x20x40 cm, de la marca Ytong.png'
     },
 
     {
@@ -157,7 +157,7 @@ const productos = [
         precio: 9990,
         stock: 40,
         stockMinimo: 10,
-        imagen: 'assets/img/pintura-sipa.png'
+        imagen: '/img/productos/pintura-sipa.png'
     },
 
     {
@@ -171,7 +171,7 @@ const productos = [
         precio: 12990,
         stock: 30,
         stockMinimo: 8,
-        imagen: 'assets/img/Pintura látex interior 4 litros (varios col.), de la marca Sipa.png'
+        imagen: '/img/productos/Pintura látex interior 4 litros (varios col.), de la marca Sipa.png'
     },
 
     {
@@ -185,7 +185,7 @@ const productos = [
         precio: 13990,
         stock: 25,
         stockMinimo: 8,
-        imagen: 'assets/img/Pintura látex exterior 1 galón blanco, de la marca Kömex.png'
+        imagen: '/img/productos/Pintura látex exterior 1 galón blanco, de la marca Kömex.png'
     },
 
     {
@@ -199,7 +199,7 @@ const productos = [
         precio: 4290,
         stock: 50,
         stockMinimo: 15,
-        imagen: 'assets/img/Esmalte sintético.png'
+        imagen: '/img/productos/Esmalte sintético.png'
     },
 
     {
@@ -213,7 +213,7 @@ const productos = [
         precio: 9490,
         stock: 30,
         stockMinimo: 10,
-        imagen: 'assets/img/Esmalte sintético 1 litro.png'
+        imagen: '/img/productos/Esmalte sintético 1 litro.png'
     },
 
     {
@@ -227,7 +227,7 @@ const productos = [
         precio: 17990,
         stock: 15,
         stockMinimo: 5,
-        imagen: 'assets/img/Pintura antihumedad 1 galón blanco.png'
+        imagen: '/img/productos/Pintura antihumedad 1 galón blanco.png'
     },
 
     {
@@ -241,7 +241,7 @@ const productos = [
         precio: 3990,
         stock: 30,
         stockMinimo: 10,
-        imagen: 'assets/img/Rodillo lana 23 cm con mango.png'
+        imagen: '/img/productos/Rodillo lana 23 cm con mango.png'
     },
 
     {
@@ -255,7 +255,7 @@ const productos = [
         precio: 1690,
         stock: 40,
         stockMinimo: 10,
-        imagen: 'assets/img/Brocha cerda natural 3.png'
+        imagen: '/img/productos/Brocha cerda natural 3.png'
     },
 
     {
@@ -269,7 +269,7 @@ const productos = [
         precio: 2490,
         stock: 60,
         stockMinimo: 20,
-        imagen: 'assets/img/Cinta de enmascarar 24mm x 50m.png'
+        imagen: '/img/productos/Cinta de enmascarar 24mm x 50m.png'
     },
 
     {
@@ -283,7 +283,7 @@ const productos = [
         precio: 7990,
         stock: 20,
         stockMinimo: 5,
-        imagen: 'assets/img/martillo.png'
+        imagen: '/img/productos/martillo.png'
     },
 
     {
@@ -297,7 +297,7 @@ const productos = [
         precio: 7290,
         stock: 15,
         stockMinimo: 5,
-        imagen: 'assets/img/Alicate universal 8.png'
+        imagen: '/img/productos/Alicate universal 8.png'
     },
 
     {
@@ -311,7 +311,7 @@ const productos = [
         precio: 1990,
         stock: 30,
         stockMinimo: 10,
-        imagen: 'assets/img/Destornillador plano 6x100mm.png'
+        imagen: '/img/productos/Destornillador plano 6x100mm.png'
     },
 
     {
@@ -325,7 +325,7 @@ const productos = [
         precio: 1990,
         stock: 30,
         stockMinimo: 10,
-        imagen: 'assets/img/Destornillador Phillips PH2 6x100mm.png'
+        imagen: '/img/productos/Destornillador Phillips PH2 6x100mm.png'
     },
 
     {
@@ -339,7 +339,7 @@ const productos = [
         precio: 8490,
         stock: 12,
         stockMinimo: 4,
-        imagen: 'assets/img/Llave ajustable 10.png'
+        imagen: '/img/productos/Llave ajustable 10.png'
     },
 
     {
@@ -353,7 +353,7 @@ const productos = [
         precio: 5490,
         stock: 15,
         stockMinimo: 5,
-        imagen: 'assets/img/Juego llaves hexagonales métrico x9.png'
+        imagen: '/img/productos/Juego llaves hexagonales métrico x9.png'
     },
 
     {
@@ -367,7 +367,7 @@ const productos = [
         precio: 9490,
         stock: 10,
         stockMinimo: 3,
-        imagen: 'assets/img/Serrucho.png'
+        imagen: '/img/productos/Serrucho.png'
     },
 
     {
@@ -381,7 +381,7 @@ const productos = [
         precio: 10490,
         stock: 8,
         stockMinimo: 3,
-        imagen: 'assets/img/Nivel de burbuja 60 cm.png'
+        imagen: '/img/productos/Nivel de burbuja 60 cm.png'
     },
 
     {
@@ -395,7 +395,7 @@ const productos = [
         precio: 4290,
         stock: 25,
         stockMinimo: 8,
-        imagen: 'assets/img/Metro de tela 5m, de la marca Stanley.png'
+        imagen: '/img/productos/Metro de tela 5m, de la marca Stanley.png'
     },
 
     {
@@ -409,7 +409,7 @@ const productos = [
         precio: 6490,
         stock: 20,
         stockMinimo: 6,
-        imagen: 'assets/img/Cinta métrica 8m autoblocante.png'
+        imagen: '/img/productos/Cinta métrica 8m autoblocante.png'
     },
 
     {
@@ -423,7 +423,7 @@ const productos = [
         precio: 79990,
         stock: 8,
         stockMinimo: 2,
-        imagen: 'assets/img/Taladro percutor 650W 13mm.png'
+        imagen: '/img/productos/Taladro percutor 650W 13mm.png'
     },
 
     {
@@ -437,7 +437,7 @@ const productos = [
         precio: 104990,
         stock: 5,
         stockMinimo: 2,
-        imagen: 'assets/img/Atornillador inalámbrico 12V (kit).png'
+        imagen: '/img/productos/Atornillador inalámbrico 12V (kit).png'
     },
 
     {
@@ -451,7 +451,7 @@ const productos = [
         precio: 54990,
         stock: 8,
         stockMinimo: 2,
-        imagen: 'assets/img/Amoladora angular.png'
+        imagen: '/img/productos/Amoladora angular.png'
     },
 
     {
@@ -465,7 +465,7 @@ const productos = [
         precio: 72990,
         stock: 4,
         stockMinimo: 1,
-        imagen: 'assets/img/Sierra circular.png'
+        imagen: '/img/productos/Sierra circular.png'
     },
 
     {
@@ -479,7 +479,7 @@ const productos = [
         precio: 34990,
         stock: 6,
         stockMinimo: 2,
-        imagen: 'assets/img/Lijadora orbital.png'
+        imagen: '/img/productos/Lijadora orbital.png'
     },
 
     {
@@ -493,7 +493,7 @@ const productos = [
         precio: 42990,
         stock: 4,
         stockMinimo: 1,
-        imagen: 'assets/img/Caladora.png'
+        imagen: '/img/productos/Caladora.png'
     },
 
     {
@@ -507,7 +507,7 @@ const productos = [
         precio: 5490,
         stock: 30,
         stockMinimo: 10,
-        imagen: 'assets/img/Cañería PVC.png'
+        imagen: '/img/productos/Cañería PVC.png'
     },
 
     {
@@ -521,7 +521,7 @@ const productos = [
         precio: 7490,
         stock: 25,
         stockMinimo: 8,
-        imagen: 'assets/img/Cañería PVC3.png'
+        imagen: '/img/productos/Cañería PVC3.png'
     },
 
     {
@@ -535,7 +535,7 @@ const productos = [
         precio: 17990,
         stock: 15,
         stockMinimo: 5,
-        imagen: 'assets/img/Cañería cobre.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -549,7 +549,7 @@ const productos = [
         precio: 390,
         stock: 100,
         stockMinimo: 30,
-        imagen: 'assets/img/Codo PVC.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -563,7 +563,7 @@ const productos = [
         precio: 450,
         stock: 80,
         stockMinimo: 25,
-        imagen: 'assets/img/Te PVC.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -577,7 +577,7 @@ const productos = [
         precio: 320,
         stock: 80,
         stockMinimo: 25,
-        imagen: 'assets/img/Unión doble PVC.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -591,7 +591,7 @@ const productos = [
         precio: 3490,
         stock: 30,
         stockMinimo: 10,
-        imagen: 'assets/img/Llave de paso esfera.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -605,7 +605,7 @@ const productos = [
         precio: 4990,
         stock: 20,
         stockMinimo: 8,
-        imagen: 'assets/img/Llave de paso esfera3.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -619,7 +619,7 @@ const productos = [
         precio: 22990,
         stock: 10,
         stockMinimo: 3,
-        imagen: 'assets/img/Grifería lavamanos monocomando cromo.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -633,7 +633,7 @@ const productos = [
         precio: 28990,
         stock: 8,
         stockMinimo: 2,
-        imagen: 'assets/img/Grifería cocina monocomando cuello alto.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -647,7 +647,7 @@ const productos = [
         precio: 790,
         stock: 80,
         stockMinimo: 25,
-        imagen: 'assets/img/Teflón.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -661,7 +661,7 @@ const productos = [
         precio: 5490,
         stock: 25,
         stockMinimo: 8,
-        imagen: 'assets/img/Silicona transparente 280ml.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -675,7 +675,7 @@ const productos = [
         precio: 590,
         stock: 100,
         stockMinimo: 30,
-        imagen: 'assets/img/Cable unipolar.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -689,7 +689,7 @@ const productos = [
         precio: 790,
         stock: 100,
         stockMinimo: 30,
-        imagen: 'assets/img/Cable unipolar2.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -703,7 +703,7 @@ const productos = [
         precio: 990,
         stock: 80,
         stockMinimo: 25,
-        imagen: 'assets/img/Cable dúplex paralelo.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -717,7 +717,7 @@ const productos = [
         precio: 3690,
         stock: 50,
         stockMinimo: 15,
-        imagen: 'assets/img/Enchufe empotrar tierra.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -731,7 +731,7 @@ const productos = [
         precio: 5490,
         stock: 40,
         stockMinimo: 12,
-        imagen: 'assets/img/Enchufe doble empotrar.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -745,7 +745,7 @@ const productos = [
         precio: 3190,
         stock: 50,
         stockMinimo: 15,
-        imagen: 'assets/img/Interruptor simple empotrar.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -759,7 +759,7 @@ const productos = [
         precio: 4290,
         stock: 35,
         stockMinimo: 10,
-        imagen: 'assets/img/Interruptor doble empotrar.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -773,7 +773,7 @@ const productos = [
         precio: 22990,
         stock: 8,
         stockMinimo: 2,
-        imagen: 'assets/img/Tablero eléctrico 4 espacios DIN.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -787,7 +787,7 @@ const productos = [
         precio: 6490,
         stock: 20,
         stockMinimo: 5,
-        imagen: 'assets/img/Disyuntor termomagnético 16A unipolar.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -801,7 +801,7 @@ const productos = [
         precio: 6990,
         stock: 20,
         stockMinimo: 5,
-        imagen: 'assets/img/Disyuntor termomagnético 25A unipolar.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -815,7 +815,7 @@ const productos = [
         precio: 3990,
         stock: 60,
         stockMinimo: 20,
-        imagen: 'assets/img/Ampolleta LED 9W E27 luz fría.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -829,7 +829,7 @@ const productos = [
         precio: 4490,
         stock: 50,
         stockMinimo: 15,
-        imagen: 'assets/img/Ampolleta LED 12W E27 luz cálida.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -843,7 +843,7 @@ const productos = [
         precio: 11490,
         stock: 20,
         stockMinimo: 6,
-        imagen: 'assets/img/Panel LED empotrar 18W 22cm.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -857,7 +857,7 @@ const productos = [
         precio: 2990,
         stock: 40,
         stockMinimo: 12,
-        imagen: 'assets/img/Tornillo autoperf. 8x1.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -871,7 +871,7 @@ const productos = [
         precio: 2490,
         stock: 40,
         stockMinimo: 12,
-        imagen: 'assets/img/Tornillo madera 4x40mm.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -885,7 +885,7 @@ const productos = [
         precio: 3490,
         stock: 30,
         stockMinimo: 10,
-        imagen: 'assets/img/Tornillo volcanita 3.5x25mm.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -899,7 +899,7 @@ const productos = [
         precio: 3190,
         stock: 35,
         stockMinimo: 10,
-        imagen: 'assets/img/Taco fisher S6 bolsa.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -913,7 +913,7 @@ const productos = [
         precio: 2890,
         stock: 30,
         stockMinimo: 10,
-        imagen: 'assets/img/Taco fisher S8 bolsa.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -927,7 +927,7 @@ const productos = [
         precio: 290,
         stock: 200,
         stockMinimo: 50,
-        imagen: 'assets/img/Perno hex. tuerca y golilla.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -941,7 +941,7 @@ const productos = [
         precio: 990,
         stock: 60,
         stockMinimo: 15,
-        imagen: 'assets/img/Perno de anclaje 10x100mm.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -955,7 +955,7 @@ const productos = [
         precio: 15990,
         stock: 8,
         stockMinimo: 2,
-        imagen: 'assets/img/Anclaje químico epoxi 300ml.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -969,7 +969,7 @@ const productos = [
         precio: 4290,
         stock: 40,
         stockMinimo: 12,
-        imagen: 'assets/img/Pino cepillado 1x3 x 3m.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -983,7 +983,7 @@ const productos = [
         precio: 7490,
         stock: 30,
         stockMinimo: 10,
-        imagen: 'assets/img/Pino cepillado 2x4 x 3m.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -997,7 +997,7 @@ const productos = [
         precio: 34990,
         stock: 20,
         stockMinimo: 5,
-        imagen: 'assets/img/Terciado estructural 18mm 1.22x2.44m.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -1011,7 +1011,7 @@ const productos = [
         precio: 27990,
         stock: 15,
         stockMinimo: 4,
-        imagen: 'assets/img/MDF 15mm 1.22x2.44m.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -1025,7 +1025,7 @@ const productos = [
         precio: 18990,
         stock: 18,
         stockMinimo: 5,
-        imagen: 'assets/img/OSB 9mm 1.22x2.44m.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -1039,7 +1039,7 @@ const productos = [
         precio: 8990,
         stock: 30,
         stockMinimo: 8,
-        imagen: 'assets/img/Volcanita estándar 10mm 1.2x2.4m.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -1053,7 +1053,7 @@ const productos = [
         precio: 11990,
         stock: 15,
         stockMinimo: 4,
-        imagen: 'assets/img/Volcanita resistente humedad 10mm.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -1067,7 +1067,7 @@ const productos = [
         precio: 6990,
         stock: 15,
         stockMinimo: 5,
-        imagen: 'assets/img/Casco seguridad blanco.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -1081,7 +1081,7 @@ const productos = [
         precio: 3690,
         stock: 20,
         stockMinimo: 6,
-        imagen: 'assets/img/Guantes de cuero talla L.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -1095,7 +1095,7 @@ const productos = [
         precio: 2490,
         stock: 25,
         stockMinimo: 8,
-        imagen: 'assets/img/Antiparras de seguridad clear.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -1109,7 +1109,7 @@ const productos = [
         precio: 10990,
         stock: 10,
         stockMinimo: 3,
-        imagen: 'assets/img/Mascarilla respirador N95.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -1123,7 +1123,7 @@ const productos = [
         precio: 34990,
         stock: 4,
         stockMinimo: 1,
-        imagen: 'assets/img/Arnés de seguridad 1 punto.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -1137,7 +1137,7 @@ const productos = [
         precio: 22990,
         stock: 6,
         stockMinimo: 2,
-        imagen: 'assets/img/Manguera riego 25m.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -1151,7 +1151,7 @@ const productos = [
         precio: 28990,
         stock: 5,
         stockMinimo: 2,
-        imagen: 'assets/img/Manguera expandible 30m.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -1165,7 +1165,7 @@ const productos = [
         precio: 5490,
         stock: 10,
         stockMinimo: 3,
-        imagen: 'assets/img/Pistola de riego 8 modos.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -1179,7 +1179,7 @@ const productos = [
         precio: 10990,
         stock: 8,
         stockMinimo: 2,
-        imagen: 'assets/img/Pala punta redonda con mango.png'
+        imagen: 'assets/img/'
     },
 
     {
@@ -1193,59 +1193,95 @@ const productos = [
         precio: 9490,
         stock: 6,
         stockMinimo: 2,
-        imagen: 'assets/img/Rastrillo 16 dientes con mango.png'
+        imagen: 'assets/img/'
     }
 
 
 ];
 
+// Si ya hay productos guardados en localStorage se usan esos; si no,
+// se parte desde el catálogo base de arriba.
+export const productos = leerDatos(CLAVE_PRODUCTOS, productosBase);
 
-// ========================================
-// BUSCAR UN PRODUCTO POR SU CÓDIGO
-// ========================================
-
-function buscarProductoPorCodigo(codigo) {
-
-    for (const producto of productos) {
-
-        if (producto.codigo === codigo) {
-
-            return producto;
-
-        }
-
-    }
-
-    return null;
-
+function guardarProductos() {
+  guardarDatos(CLAVE_PRODUCTOS, productos);
 }
 
 
 // ========================================
-// FORMATEAR PRECIO EN PESOS CHILENOS
-// Ej: 22990 -> "$22.990"
+// LEER (Read)
 // ========================================
 
-function formatearPrecio(numero) {
+export function obtenerProductos() {
+  return productos;
+}
 
-    const texto = String(numero);
+export function obtenerProductoPorCodigo(codigo) {
+  return productos.find((producto) => producto.codigo === codigo) || null;
+}
 
-    let resultado = '';
-    let contador = 0;
+export function obtenerCategorias() {
+  const categorias = productos.map((producto) => producto.categoria);
+  return [...new Set(categorias)];
+}
 
-    for (let i = texto.length - 1; i >= 0; i--) {
+export function obtenerProductosCriticos() {
+  return productos.filter(esStockCritico);
+}
 
-        resultado = texto[i] + resultado;
-        contador++;
+export function obtenerProductosEnOferta() {
+  return productos.filter(tieneOferta);
+}
 
-        if (contador % 3 === 0 && i !== 0) {
+export function obtenerProductosSinStock() {
+  return productos.filter(estaSinStock);
+}
 
-            resultado = '.' + resultado;
 
-        }
+// ========================================
+// CREAR (Create)
+// ========================================
 
-    }
+export function crearProducto(nuevoProducto) {
+  productos.push(nuevoProducto);
+  guardarProductos();
+  return nuevoProducto;
+}
 
-    return `$${resultado}`;
 
+// ========================================
+// ACTUALIZAR (Update)
+// ========================================
+
+export function actualizarProducto(codigo, datosNuevos) {
+  const indice = productos.findIndex((producto) => producto.codigo === codigo);
+
+  if (indice === -1) {
+    return null;
+  }
+
+  productos[indice] = { ...productos[indice], ...datosNuevos };
+  guardarProductos();
+  return productos[indice];
+}
+
+export function actualizarStock(codigo, nuevoStock) {
+  return actualizarProducto(codigo, { stock: nuevoStock });
+}
+
+
+// ========================================
+// ELIMINAR (Delete)
+// ========================================
+
+export function eliminarProducto(codigo) {
+  const indice = productos.findIndex((producto) => producto.codigo === codigo);
+
+  if (indice === -1) {
+    return false;
+  }
+
+  productos.splice(indice, 1);
+  guardarProductos();
+  return true;
 }
