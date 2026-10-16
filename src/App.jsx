@@ -13,7 +13,6 @@ import Blog from "./pages/Blog";
 import Carrito from "./pages/Carrito";
 import InicioSesion from "./pages/InicioSesion";
 import Registro from "./pages/Registro";
-import AccesoPrueba from "./pages/AccesoPrueba";
 import NoEncontrada from "./pages/NoEncontrada";
 
 // ---- Panel (Vendedor / Administrador) ----
@@ -52,8 +51,6 @@ function App() {
         <Route path="/carrito" element={<Carrito />} />
         <Route path="/inicio-sesion" element={<InicioSesion />} />
         <Route path="/registro" element={<Registro />} />
-        {/* TEMPORAL: borrar antes de la entrega final */}
-        <Route path="/acceso-prueba" element={<AccesoPrueba />} />
       </Route>
 
       {/* ---- Panel: Vendedor + Administrador ---- */}
