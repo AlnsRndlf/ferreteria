@@ -41,7 +41,7 @@ Inicia tu Learner Lab y lanza una nueva instancia con las siguientes caracterís
 - **Par de claves (Key pair):** RSA en formato `.pem`. **Importante:** Guarda este archivo en un lugar seguro en tu computador local, ya que es necesario para la conexión por SSH.
 - **Configuraciones de red (Seguridad):**
   - Permitir tráfico **SSH** (puerto 22) estrictamente desde **"Mi IP"**.
-  - Permitir tráfico **HTTP** (puerto 80) desde **Internet** (Anywhere - 0.0.0.0/0).
+  - Permitir tráfico **HTTP** (puerto 80) estrictamente desde **"Mi IP"**.
 - *Mantén las demás configuraciones por defecto.*
 
 ### 2. Construcción de producción
@@ -111,11 +111,12 @@ server {
     listen 80;
     listen [::]:80;
     server_name _;
-    root /var/www/ferreteria;
+
+    root /var/www/conecta-cultura;
     index index.html;
 
     location / {
-        try_files $uri$uri/ /index.html;
+        try_files $uri $uri/ /index.html;
     }
 }
 ```
