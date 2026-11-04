@@ -66,7 +66,8 @@ describe("Catalogo", () => {
     const onAgregarCarrito = vi.fn();
     renderizar("/productos", onAgregarCarrito);
 
-    const botones = screen.getAllByRole("button", { name: /agregar al carrito/i });
+    // getAllByText es mucho más rápido que getAllByRole cuando hay 85 tarjetas.
+    const botones = screen.getAllByText("Agregar al carrito");
     await usuario.click(botones[0]);
 
     expect(onAgregarCarrito).toHaveBeenCalledWith(obtenerProductos()[0]);

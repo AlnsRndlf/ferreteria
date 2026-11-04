@@ -1,5 +1,12 @@
+function agruparMiles(numero) {
+  const entero = String(Math.round(Math.abs(numero)));
+  const conPuntos = entero.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return numero < 0 ? `-${conPuntos}` : conPuntos;
+}
+
+// Para totales (carrito, pedidos): siempre muestra el monto, incluso $0.
 export function formatearMonto(valor) {
-  return `$${valor.toLocaleString("es-CL")}`;
+  return `$${agruparMiles(valor)}`;
 }
 
 // Para el precio de un producto: 0 se muestra como "Gratis".
