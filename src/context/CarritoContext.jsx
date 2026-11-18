@@ -40,6 +40,7 @@ export function CarritoProvider({ children }) {
       return [
         ...actuales,
         {
+          id: producto.id,
           codigo: producto.codigo,
           nombre: producto.nombre,
           precio: precioFinal(producto),
