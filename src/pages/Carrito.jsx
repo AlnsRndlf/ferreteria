@@ -3,8 +3,7 @@ import { Alert, Button, Container, Form, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useCarrito } from "../context/CarritoContext";
 import { useUsuarioActual } from "../hooks/useUsuarioActual";
-import { obtenerUsuarios } from "../data/usuarios";
-import { registrarPedido } from "../data/pedidos";
+import { crearPedido } from "../services/boletaService";
 import { formatearMonto } from "../utils/precio";
 
 const TIPOS_ENTREGA = ["Retiro en tienda", "Despacho a domicilio"];
@@ -14,23 +13,26 @@ function Carrito() {
   const { usuario } = useUsuarioActual();
   const [tipoEntrega, setTipoEntrega] = useState(TIPOS_ENTREGA[0]);
   const [pedidoConfirmado, setPedidoConfirmado] = useState(null);
+  const [errorPedido, setErrorPedido] = useState("");
+  const [enviando, setEnviando] = useState(false);
 
-  function confirmar() {
-    const registrado = obtenerUsuarios().find(
-      (item) => item.correo.toLowerCase() === usuario.correo.toLowerCase()
-    );
-
-    const pedido = registrarPedido({
-      cliente: registrado ? `${registrado.nombre} ${registrado.apellidos}` : usuario.correo,
-      clienteCorreo: usuario.correo,
-      tipoEntrega,
-      items: items.map(({ codigo, nombre, precio, cantidad }) => ({
-        codigo, nombre, precio, cantidad,
-      })),
-    });
-
-    vaciar();
-    setPedidoConfirmado(pedido);
+  // El backend valida el stock, calcula el total, descuenta el stock y guarda la boleta.
+  // El cliente sale del token, así que aquí solo se envía qué se compra y cuánto.
+  async function confirmar() {
+    setErrorPedido("");
+    setEnviando(true);
+    try {
+      const pedido = await crearPedido({
+        tipoEntrega,
+        items: items.map(({ id, codigo, cantidad }) => ({ id, codigo, cantidad })),
+      });
+      vaciar();
+      setPedidoConfirmado(pedido);
+    } catch (error) {
+      setErrorPedido(error.message);
+    } finally {
+      setEnviando(false);
+    }
   }
 
   if (pedidoConfirmado) {
@@ -127,8 +129,9 @@ function Carrito() {
                   ))}
                 </Form.Select>
               </Form.Group>
-              <Button variant="success" onClick={confirmar}>
-                Confirmar pedido por {formatearMonto(total)}
+              {errorPedido && <Alert variant="danger">{errorPedido}</Alert>}
+              <Button variant="success" onClick={confirmar} disabled={enviando}>
+                {enviando ? "Confirmando..." : `Confirmar pedido por ${formatearMonto(total)}`}
               </Button>
             </section>
           ) : (

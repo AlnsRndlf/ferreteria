@@ -1,30 +1,40 @@
 import PanelLayout from "../../components/PanelLayout";
 import TarjetaResumen from "../../components/TarjetaResumen";
+import EstadoCarga from "../../components/EstadoCarga";
+import { useApi } from "../../hooks/useApi";
 import { useUsuarioActual } from "../../hooks/useUsuarioActual";
-import { obtenerProductos, obtenerProductosCriticos } from "../../data/productos";
-import { obtenerUsuarios } from "../../data/usuarios";
-import { obtenerPedidos } from "../../data/pedidos";
+import { listarPedidos } from "../../services/boletaService";
+import { listarProductos } from "../../services/productoService";
+import { formatearMonto } from "../../utils/precio";
+import { esStockCritico, estaSinStock } from "../../utils/stock";
 
 function DashboardAdmin() {
   const { usuario } = useUsuarioActual();
+  const { datos, cargando, error } = useApi(
+    () => Promise.all([listarProductos(), listarPedidos()]),
+    []
+  );
+  const [productos, pedidos] = datos ?? [[], []];
 
-  const totalProductos = obtenerProductos().length;
-  const totalCriticos = obtenerProductosCriticos().length;
-  const totalUsuarios = obtenerUsuarios().length;
-  const totalPedidos = obtenerPedidos().length;
+  const totalCriticos = productos.filter(
+    (producto) => esStockCritico(producto) || estaSinStock(producto)
+  ).length;
+  const ventasTotales = pedidos.reduce((suma, pedido) => suma + pedido.total, 0);
 
   return (
     <PanelLayout titulo="Dashboard">
-      <div className="panel-tarjetas-resumen">
-        <TarjetaResumen valor={totalProductos} etiqueta="Productos en catálogo" />
-        <TarjetaResumen
-          valor={totalCriticos}
-          etiqueta="Productos con stock crítico"
-          alerta={totalCriticos > 0}
-        />
-        <TarjetaResumen valor={totalUsuarios} etiqueta="Usuarios registrados" />
-        <TarjetaResumen valor={totalPedidos} etiqueta="Pedidos recibidos" />
-      </div>
+      <EstadoCarga cargando={cargando} error={error}>
+        <div className="panel-tarjetas-resumen">
+          <TarjetaResumen valor={productos.length} etiqueta="Productos en catálogo" />
+          <TarjetaResumen
+            valor={totalCriticos}
+            etiqueta="Productos con stock crítico"
+            alerta={totalCriticos > 0}
+          />
+          <TarjetaResumen valor={pedidos.length} etiqueta="Pedidos recibidos" />
+          <TarjetaResumen valor={formatearMonto(ventasTotales)} etiqueta="Ventas totales" />
+        </div>
+      </EstadoCarga>
 
       {usuario && (
         <p className="panel-estado-vacio">
