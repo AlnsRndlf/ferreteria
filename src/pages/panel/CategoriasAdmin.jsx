@@ -1,20 +1,32 @@
 import { useState } from "react";
+import { Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import EstadoCarga from "../../components/EstadoCarga";
 import PanelLayout from "../../components/PanelLayout";
-import { obtenerCategorias, eliminarCategoria } from "../../data/categorias";
+import { useApi } from "../../hooks/useApi";
+import { eliminarCategoria, listarCategorias } from "../../services/categoriaService";
 
 function CategoriasAdmin() {
-  const [version, setVersion] = useState(0);
   const navegar = useNavigate();
+  const { datos, cargando, error, recargar } = useApi(listarCategorias, []);
+  const [errorAccion, setErrorAccion] = useState("");
 
-  const categorias = obtenerCategorias();
+  const categorias = datos ?? [];
 
-  function manejarEliminar(id, nombre) {
-    const confirmar = window.confirm(`¿Eliminar la categoría "${nombre}"?`);
+  async function manejarEliminar(categoria) {
+    const confirmar = window.confirm(`¿Eliminar la categoría "${categoria.nombre}"?`);
+    if (!confirmar) return;
 
-    if (confirmar) {
-      eliminarCategoria(id);
-      setVersion(version + 1);
+    setErrorAccion("");
+    try {
+      await eliminarCategoria(categoria.id);
+      recargar();
+    } catch (e) {
+      setErrorAccion(
+        e.status === 409
+          ? `No se puede eliminar "${categoria.nombre}" porque todavía tiene productos.`
+          : e.message
+      );
     }
   }
 
@@ -28,41 +40,45 @@ function CategoriasAdmin() {
         + Nueva categoría
       </button>
 
-      <div className="table-responsive">
-        <table className="table table-hover align-middle" key={version}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {categorias.map((categoria) => (
-              <tr key={categoria.id}>
-                <td>{categoria.id}</td>
-                <td>{categoria.nombre}</td>
-                <td>
-                  <button
-                    type="button"
-                    className="panel-boton editar me-1"
-                    onClick={() => navegar(`/panel/categorias/editar/${categoria.id}`)}
-                  >
-                    Editar
-                  </button>
-                  <button
-                    type="button"
-                    className="panel-boton eliminar"
-                    onClick={() => manejarEliminar(categoria.id, categoria.nombre)}
-                  >
-                    Eliminar
-                  </button>
-                </td>
+      {errorAccion && <Alert variant="danger" className="mt-3">{errorAccion}</Alert>}
+
+      <EstadoCarga cargando={cargando} error={error}>
+        <div className="table-responsive">
+          <table className="table table-hover align-middle">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {categorias.map((categoria) => (
+                <tr key={categoria.id}>
+                  <td>{categoria.id}</td>
+                  <td>{categoria.nombre}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="panel-boton editar me-1"
+                      onClick={() => navegar(`/panel/categorias/editar/${categoria.id}`)}
+                    >
+                      Editar
+                    </button>
+                    <button
+                      type="button"
+                      className="panel-boton eliminar"
+                      onClick={() => manejarEliminar(categoria)}
+                    >
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </EstadoCarga>
     </PanelLayout>
   );
 }

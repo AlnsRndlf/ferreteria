@@ -1,58 +1,87 @@
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Alert, Button, Form } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import PanelLayout from "../../components/PanelLayout";
 import CampoFormulario from "../../components/CampoFormulario";
+import EstadoCarga from "../../components/EstadoCarga";
+import { useApi } from "../../hooks/useApi";
 import {
-  obtenerCategoriaPorId,
-  crearCategoria,
   actualizarCategoria,
-} from "../../data/categorias";
+  crearCategoria,
+  obtenerCategoria,
+} from "../../services/categoriaService";
 
-function CategoriaForm() {
-  const { id } = useParams();
+function FormularioCategoria({ categoria }) {
   const navegar = useNavigate();
-  const esEdicion = Boolean(id);
+  const esEdicion = Boolean(categoria);
 
-  const categoriaExistente = esEdicion ? obtenerCategoriaPorId(Number(id)) : null;
-
-  const [nombre, setNombre] = useState(
-    categoriaExistente ? categoriaExistente.nombre : ""
-  );
+  const [nombre, setNombre] = useState(categoria ? categoria.nombre : "");
   const [error, setError] = useState("");
+  const [errorGeneral, setErrorGeneral] = useState("");
+  const [enviando, setEnviando] = useState(false);
 
-  function enviar(evento) {
+  async function enviar(evento) {
     evento.preventDefault();
+    setError("");
+    setErrorGeneral("");
 
     if (!nombre.trim()) {
       setError("El nombre de la categoría es obligatorio.");
       return;
     }
 
-    if (esEdicion) {
-      actualizarCategoria(Number(id), nombre.trim());
-    } else {
-      crearCategoria(nombre.trim());
+    setEnviando(true);
+    try {
+      if (esEdicion) {
+        await actualizarCategoria(categoria.id, nombre.trim());
+      } else {
+        await crearCategoria(nombre.trim());
+      }
+      navegar("/panel/categorias");
+    } catch (e) {
+      if (e.status === 409) {
+        setError(e.message);
+      } else {
+        setErrorGeneral(e.message);
+      }
+    } finally {
+      setEnviando(false);
     }
-
-    navegar("/panel/categorias");
   }
 
   return (
-    <PanelLayout titulo={esEdicion ? "Editar categoría" : "Nueva categoría"}>
-      <Form onSubmit={enviar} noValidate className="panel-formulario">
-        <CampoFormulario
-          nombre="nombre"
-          etiqueta="Nombre de la categoría"
-          valor={nombre}
-          error={error}
-          onChange={(evento) => setNombre(evento.target.value)}
-        />
+    <Form onSubmit={enviar} noValidate className="panel-formulario">
+      {errorGeneral && <Alert variant="danger">{errorGeneral}</Alert>}
 
-        <Button type="submit">
-          {esEdicion ? "Guardar cambios" : "Crear categoría"}
-        </Button>
-      </Form>
+      <CampoFormulario
+        nombre="nombre"
+        etiqueta="Nombre de la categoría"
+        valor={nombre}
+        error={error}
+        onChange={(evento) => setNombre(evento.target.value)}
+      />
+
+      <Button type="submit" disabled={enviando}>
+        {enviando ? "Guardando..." : esEdicion ? "Guardar cambios" : "Crear categoría"}
+      </Button>
+    </Form>
+  );
+}
+
+function CategoriaForm() {
+  const { id } = useParams();
+  const esEdicion = Boolean(id);
+
+  const { datos: categoria, cargando, error } = useApi(
+    () => (esEdicion ? obtenerCategoria(id) : Promise.resolve(null)),
+    [id]
+  );
+
+  return (
+    <PanelLayout titulo={esEdicion ? "Editar categoría" : "Nueva categoría"}>
+      <EstadoCarga cargando={cargando} error={error}>
+        <FormularioCategoria categoria={categoria} />
+      </EstadoCarga>
     </PanelLayout>
   );
 }

@@ -2,11 +2,15 @@ import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import PanelLayout from "../../components/PanelLayout";
 import BadgeStock from "../../components/BadgeStock";
-import { obtenerProductos } from "../../data/productos";
+import EstadoCarga from "../../components/EstadoCarga";
+import { useApi } from "../../hooks/useApi";
+import { listarProductos } from "../../services/productoService";
 import { esStockCritico, estaSinStock } from "../../utils/stock";
 
 function ProductosCriticos() {
-  const aReponer = obtenerProductos().filter(
+  const { datos, cargando, error } = useApi(listarProductos, []);
+
+  const aReponer = (datos ?? []).filter(
     (producto) => esStockCritico(producto) || estaSinStock(producto)
   );
 
@@ -17,32 +21,34 @@ function ProductosCriticos() {
         actualizar las cantidades ve a <Link to="/panel/inventario">Inventario</Link>.
       </p>
 
-      {aReponer.length === 0 ? (
-        <p className="panel-estado-vacio">No hay productos que reponer.</p>
-      ) : (
-        <Table responsive hover className="align-middle">
-          <thead>
-            <tr>
-              <th>Código</th>
-              <th>Producto</th>
-              <th>Stock</th>
-              <th>Stock mínimo</th>
-              <th>Estado</th>
-            </tr>
-          </thead>
-          <tbody>
-            {aReponer.map((producto) => (
-              <tr key={producto.codigo}>
-                <td>{producto.codigo}</td>
-                <td>{producto.nombre}</td>
-                <td>{producto.stock}</td>
-                <td>{producto.stockMinimo}</td>
-                <td><BadgeStock producto={producto} /></td>
+      <EstadoCarga cargando={cargando} error={error}>
+        {aReponer.length === 0 ? (
+          <p className="panel-estado-vacio">No hay productos que reponer.</p>
+        ) : (
+          <Table responsive hover className="align-middle">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Producto</th>
+                <th>Stock</th>
+                <th>Stock mínimo</th>
+                <th>Estado</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
-      )}
+            </thead>
+            <tbody>
+              {aReponer.map((producto) => (
+                <tr key={producto.codigo}>
+                  <td>{producto.codigo}</td>
+                  <td>{producto.nombre}</td>
+                  <td>{producto.stock}</td>
+                  <td>{producto.stockMinimo}</td>
+                  <td><BadgeStock producto={producto} /></td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
+      </EstadoCarga>
     </PanelLayout>
   );
 }

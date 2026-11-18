@@ -54,11 +54,11 @@ function App() {
       </Route>
 
       {/* ---- Panel: Vendedor + Administrador ---- */}
-      <Route path="/panel" element={<Protegida roles={ROLES_PANEL}><DashboardAdmin /></Protegida>} />
+      <Route path="/panel" element={<Protegida roles={ROLES_SOLO_ADMIN}><DashboardAdmin /></Protegida>} />
       <Route path="/panel/inventario" element={<Protegida roles={ROLES_PANEL}><Inventario /></Protegida>} />
       <Route path="/panel/pedidos" element={<Protegida roles={ROLES_PANEL}><Pedidos /></Protegida>} />
       <Route path="/panel/pedidos/:numero" element={<Protegida roles={ROLES_PANEL}><Boleta /></Protegida>} />
-      <Route path="/panel/productos/criticos" element={<Protegida roles={ROLES_PANEL}><ProductosCriticos /></Protegida>} />
+      <Route path="/panel/productos/criticos" element={<Protegida roles={ROLES_SOLO_ADMIN}><ProductosCriticos /></Protegida>} />
       <Route path="/panel/perfil" element={<Protegida roles={ROLES_PANEL}><Perfil /></Protegida>} />
 
       {/* ---- Panel: solo Administrador ---- */}

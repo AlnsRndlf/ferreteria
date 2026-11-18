@@ -4,8 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import CampoFormulario from "../components/CampoFormulario";
 import { useUsuarioActual } from "../hooks/useUsuarioActual";
 import { login } from "../services/authService";
-import { ROLES_PANEL } from "../constants/roles";
+import { ROLES } from "../constants/roles";
 import { validarLogin } from "../utils/validaciones";
+
+// A dónde se envía a cada rol después de iniciar sesión
+function rutaInicial(tipoUsuario) {
+  if (tipoUsuario === ROLES.ADMINISTRADOR) return "/panel";
+  if (tipoUsuario === ROLES.VENDEDOR) return "/panel/pedidos";
+  return "/";
+}
 
 function InicioSesion() {
   const [datos, setDatos] = useState({ correo: "", contrasena: "" });
@@ -33,7 +40,7 @@ function InicioSesion() {
     try {
       const usuario = await login(datos.correo.trim(), datos.contrasena);
       iniciarSesion(usuario);
-      navegar(ROLES_PANEL.includes(usuario.tipoUsuario) ? "/panel" : "/");
+      navegar(rutaInicial(usuario.tipoUsuario));
     } catch (error) {
       setErrorGeneral(
         error.status === 401 ? "Correo o contraseña incorrectos." : error.message
