@@ -3,7 +3,10 @@ import { Container, Form } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 import GrillaProductos from "../components/GrillaProductos";
 import { useCarrito } from "../context/CarritoContext";
-import { obtenerProductos, obtenerCategorias } from "../data/productos";
+import EstadoCarga from "../components/EstadoCarga";
+import { useApi } from "../hooks/useApi";
+import { listarProductos } from "../services/productoService";
+import { listarNombresCategorias } from "../services/categoriaService";
 import { filtrarProductos } from "../utils/filtrarProductos";
 
 function Catalogo({ onAgregarCarrito }) {
@@ -14,8 +17,11 @@ function Catalogo({ onAgregarCarrito }) {
 
   const { agregar } = useCarrito();
 
-  const productos = obtenerProductos();
-  const categorias = obtenerCategorias();
+  const { datos, cargando, error } = useApi(
+    () => Promise.all([listarProductos(), listarNombresCategorias()]),
+    []
+  );
+  const [productos, categorias] = datos ?? [[], []];
   const visibles = filtrarProductos(productos, { categoria, texto });
 
   // Si la página recibe onAgregarCarrito la usa; si no, usa el carrito
@@ -32,6 +38,7 @@ function Catalogo({ onAgregarCarrito }) {
     <Container as="main" className="py-4">
       <h1 className="mb-1">Productos</h1>
 
+      <EstadoCarga cargando={cargando} error={error}>
       <p className="text-muted">
         Selección de {productos.length} productos de nuestro catálogo, que en
         tienda supera las 800 referencias.
@@ -62,6 +69,7 @@ function Catalogo({ onAgregarCarrito }) {
       </p>
 
       <GrillaProductos productos={visibles} onAgregarCarrito={agregarAlCarrito} />
+      </EstadoCarga>
     </Container>
   );
 }

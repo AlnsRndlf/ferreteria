@@ -2,9 +2,8 @@ import { useState } from "react";
 import { Alert, Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CampoFormulario from "../components/CampoFormulario";
-import { crearUsuario, existeCorreo, obtenerUsuarioPorRun } from "../data/usuarios";
+import { registrarCliente } from "../services/authService";
 import { regionesComunas } from "../data/regionesComunas";
-import { ROLES } from "../constants/roles";
 import { validarRegistro } from "../utils/validaciones";
 
 const inicial = {
@@ -16,6 +15,8 @@ function Registro() {
   const [datos, setDatos] = useState(inicial);
   const [errores, setErrores] = useState({});
   const [registrado, setRegistrado] = useState(false);
+  const [errorGeneral, setErrorGeneral] = useState("");
+  const [enviando, setEnviando] = useState(false);
 
   const regionElegida = regionesComunas.find((item) => item.region === datos.region);
   const comunasDisponibles = regionElegida ? regionElegida.comunas : [];
@@ -30,34 +31,34 @@ function Registro() {
     }
   }
 
-  function enviar(evento) {
+  async function enviar(evento) {
     evento.preventDefault();
 
     const nuevosErrores = validarRegistro(datos);
-
-    if (!nuevosErrores.run && obtenerUsuarioPorRun(datos.run.trim().toUpperCase())) {
-      nuevosErrores.run = "Ya existe un usuario con ese RUN.";
-    }
-    if (!nuevosErrores.correo && existeCorreo(datos.correo)) {
-      nuevosErrores.correo = "Ya existe un usuario con ese correo.";
-    }
-
     setErrores(nuevosErrores);
+    setErrorGeneral("");
+    setRegistrado(false);
 
     if (Object.keys(nuevosErrores).length > 0) return;
 
-    crearUsuario({
-      ...datos,
-      run: datos.run.trim().toUpperCase(),
-      nombre: datos.nombre.trim(),
-      apellidos: datos.apellidos.trim(),
-      correo: datos.correo.trim(),
-      direccion: datos.direccion.trim(),
-      tipoUsuario: ROLES.CLIENTE,
-    });
-
-    setDatos(inicial);
-    setRegistrado(true);
+    setEnviando(true);
+    try {
+      await registrarCliente({
+        nombre: `${datos.nombre.trim()} ${datos.apellidos.trim()}`.slice(0, 100),
+        correo: datos.correo.trim(),
+        password: datos.contrasena,
+      });
+      setDatos(inicial);
+      setRegistrado(true);
+    } catch (error) {
+      if (error.status === 409) {
+        setErrores({ correo: "Ya existe un usuario con ese correo." });
+      } else {
+        setErrorGeneral(error.message);
+      }
+    } finally {
+      setEnviando(false);
+    }
   }
 
   return (
@@ -70,6 +71,8 @@ function Registro() {
           Usuario registrado correctamente. <Link to="/inicio-sesion">Inicia sesión aquí</Link>.
         </Alert>
       )}
+
+      {errorGeneral && <Alert variant="danger">{errorGeneral}</Alert>}
 
       <Form onSubmit={enviar} noValidate>
         <CampoFormulario
@@ -118,7 +121,9 @@ function Registro() {
         <CampoFormulario nombre="direccion" etiqueta="Dirección" valor={datos.direccion}
           error={errores.direccion} onChange={cambiar} maxLength={300} />
 
-        <Button type="submit" className="w-100">Registrarse</Button>
+        <Button type="submit" className="w-100" disabled={enviando}>
+          {enviando ? "Registrando..." : "Registrarse"}
+        </Button>
       </Form>
 
       <p className="mt-3">

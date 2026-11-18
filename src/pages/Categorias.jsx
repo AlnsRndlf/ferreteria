@@ -1,17 +1,22 @@
-
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import GrillaProductos from "../components/GrillaProductos";
 import { useCarrito } from "../context/CarritoContext";
-import { obtenerCategorias, obtenerProductos } from "../data/productos";
+import EstadoCarga from "../components/EstadoCarga";
+import { useApi } from "../hooks/useApi";
+import { listarProductos } from "../services/productoService";
+import { listarNombresCategorias } from "../services/categoriaService";
 import { filtrarProductos } from "../utils/filtrarProductos";
 
 function Categorias({ onAgregarCarrito }) {
   const { nombre } = useParams();
   const { agregar } = useCarrito();
 
-  const categorias = obtenerCategorias();
-  const productos = obtenerProductos();
+  const { datos, cargando, error } = useApi(
+    () => Promise.all([listarProductos(), listarNombresCategorias()]),
+    []
+  );
+  const [productos, categorias] = datos ?? [[], []];
   const existe = !nombre || categorias.includes(nombre);
 
   function agregarAlCarrito(producto) {
@@ -25,6 +30,8 @@ function Categorias({ onAgregarCarrito }) {
   return (
     <Container as="main" className="py-4">
       <h1 className="mb-3">Categorías</h1>
+
+      <EstadoCarga cargando={cargando} error={error}>
 
       <Row className="g-3 mb-4">
         {categorias.map((categoria) => {
@@ -65,6 +72,7 @@ function Categorias({ onAgregarCarrito }) {
           />
         </section>
       )}
+      </EstadoCarga>
     </Container>
   );
 }

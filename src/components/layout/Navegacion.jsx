@@ -3,7 +3,8 @@ import { Button, Container, Form, Nav, NavDropdown, Navbar } from "react-bootstr
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useCarrito } from "../../context/CarritoContext";
 import { useUsuarioActual } from "../../hooks/useUsuarioActual";
-import { obtenerCategorias } from "../../data/productos";
+import { useApi } from "../../hooks/useApi";
+import { listarNombresCategorias } from "../../services/categoriaService";
 import { ROLES_PANEL } from "../../constants/roles";
 import { formatearMonto } from "../../utils/precio";
 
@@ -12,6 +13,13 @@ function Navegacion() {
   const navegar = useNavigate();
   const { total } = useCarrito();
   const { usuario, cerrarSesion } = useUsuarioActual();
+
+  // Las categorías se piden solo cuando hay sesión (el backend exige el token)
+  const { datos: categorias } = useApi(
+    () => (usuario ? listarNombresCategorias() : Promise.resolve([])),
+    [usuario?.correo]
+  );
+  const listaCategorias = categorias ?? [];
 
   function buscar(evento) {
     evento.preventDefault();
@@ -40,7 +48,7 @@ function Navegacion() {
                 Todas las categorías
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              {obtenerCategorias().map((categoria) => (
+              {listaCategorias.map((categoria) => (
                 <NavDropdown.Item
                   as={Link}
                   key={categoria}
