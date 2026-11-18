@@ -1,24 +1,25 @@
 import { useContext, useState } from "react";
-import { CLAVE_SESION, SesionContext } from "../context/SesionContext";
-import { guardarDatos, leerDatos } from "../utils/persistencia";
+import { SesionContext } from "../context/SesionContext";
+import { borrarSesion, guardarSesion, leerSesion } from "../services/sesion";
 
 export function useUsuarioActual() {
   const contexto = useContext(SesionContext);
-  const [usuarioLocal, setUsuarioLocal] = useState(() => leerDatos(CLAVE_SESION, null));
+  const [usuarioLocal, setUsuarioLocal] = useState(() => leerSesion());
 
   if (contexto) {
     return contexto;
   }
 
+  // Respaldo para componentes que se usan sin SesionProvider (por ejemplo, en pruebas)
   return {
     usuario: usuarioLocal,
     cargando: false,
     iniciarSesion(datosUsuario) {
-      guardarDatos(CLAVE_SESION, datosUsuario);
+      guardarSesion(datosUsuario);
       setUsuarioLocal(datosUsuario);
     },
     cerrarSesion() {
-      localStorage.removeItem(CLAVE_SESION);
+      borrarSesion();
       setUsuarioLocal(null);
     },
   };

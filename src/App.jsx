@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import LayoutPublico from "./components/layout/LayoutPublico";
 import RutaProtegida from "./components/RutaProtegida";
-import { ROLES_PANEL, ROLES_SOLO_ADMIN } from "./constants/roles";
+import { ROLES_PANEL, ROLES_SOLO_ADMIN, ROLES_TODOS } from "./constants/roles";
 
 // ---- Tienda (pública) ----
 import Inicio from "./pages/Inicio";
@@ -13,7 +13,6 @@ import Blog from "./pages/Blog";
 import Carrito from "./pages/Carrito";
 import InicioSesion from "./pages/InicioSesion";
 import Registro from "./pages/Registro";
-import AccesoPrueba from "./pages/AccesoPrueba";
 import NoEncontrada from "./pages/NoEncontrada";
 
 // ---- Panel (Vendedor / Administrador) ----
@@ -42,18 +41,16 @@ function App() {
     <Routes>
       {/* ---- Tienda: comparten barra y pie (LayoutPublico) ---- */}
       <Route element={<LayoutPublico />}>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/productos" element={<Catalogo />} />
-        <Route path="/productos/:codigo" element={<DetalleProducto />} />
-        <Route path="/categorias" element={<Categorias />} />
-        <Route path="/categorias/:nombre" element={<Categorias />} />
-        <Route path="/ofertas" element={<Ofertas />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/carrito" element={<Carrito />} />
+        <Route path="/" element={<Protegida roles={ROLES_TODOS}><Inicio /></Protegida>} />
+        <Route path="/productos" element={<Protegida roles={ROLES_TODOS}><Catalogo /></Protegida>} />
+        <Route path="/productos/:codigo" element={<Protegida roles={ROLES_TODOS}><DetalleProducto /></Protegida>} />
+        <Route path="/categorias" element={<Protegida roles={ROLES_TODOS}><Categorias /></Protegida>} />
+        <Route path="/categorias/:nombre" element={<Protegida roles={ROLES_TODOS}><Categorias /></Protegida>} />
+        <Route path="/ofertas" element={<Protegida roles={ROLES_TODOS}><Ofertas /></Protegida>} />
+        <Route path="/blog" element={<Protegida roles={ROLES_TODOS}><Blog /></Protegida>} />
+        <Route path="/carrito" element={<Protegida roles={ROLES_TODOS}><Carrito /></Protegida>} />
         <Route path="/inicio-sesion" element={<InicioSesion />} />
         <Route path="/registro" element={<Registro />} />
-        {/* TEMPORAL: borrar antes de la entrega final */}
-        <Route path="/acceso-prueba" element={<AccesoPrueba />} />
       </Route>
 
       {/* ---- Panel: Vendedor + Administrador ---- */}

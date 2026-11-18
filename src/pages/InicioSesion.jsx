@@ -3,7 +3,7 @@ import { Alert, Button, Container, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import CampoFormulario from "../components/CampoFormulario";
 import { useUsuarioActual } from "../hooks/useUsuarioActual";
-import { autenticarUsuario } from "../data/usuarios";
+import { login } from "../services/authService";
 import { ROLES_PANEL } from "../constants/roles";
 import { validarLogin } from "../utils/validaciones";
 
@@ -11,6 +11,7 @@ function InicioSesion() {
   const [datos, setDatos] = useState({ correo: "", contrasena: "" });
   const [errores, setErrores] = useState({});
   const [errorGeneral, setErrorGeneral] = useState("");
+  const [enviando, setEnviando] = useState(false);
   const { iniciarSesion } = useUsuarioActual();
   const navegar = useNavigate();
 
@@ -19,7 +20,7 @@ function InicioSesion() {
     setDatos({ ...datos, [name]: value });
   }
 
-  function enviar(evento) {
+  async function enviar(evento) {
     evento.preventDefault();
 
     const nuevosErrores = validarLogin(datos);
@@ -28,15 +29,18 @@ function InicioSesion() {
 
     if (Object.keys(nuevosErrores).length > 0) return;
 
-    const usuario = autenticarUsuario(datos.correo, datos.contrasena);
-
-    if (!usuario) {
-      setErrorGeneral("Correo o contraseña incorrectos.");
-      return;
+    setEnviando(true);
+    try {
+      const usuario = await login(datos.correo.trim(), datos.contrasena);
+      iniciarSesion(usuario);
+      navegar(ROLES_PANEL.includes(usuario.tipoUsuario) ? "/panel" : "/");
+    } catch (error) {
+      setErrorGeneral(
+        error.status === 401 ? "Correo o contraseña incorrectos." : error.message
+      );
+    } finally {
+      setEnviando(false);
     }
-
-    iniciarSesion(usuario);
-    navegar(ROLES_PANEL.includes(usuario.tipoUsuario) ? "/panel" : "/");
   }
 
   return (
@@ -57,7 +61,9 @@ function InicioSesion() {
           valor={datos.contrasena} error={errores.contrasena} onChange={cambiar}
           autoComplete="current-password"
         />
-        <Button type="submit" className="w-100">Iniciar sesión</Button>
+        <Button type="submit" className="w-100" disabled={enviando}>
+          {enviando ? "Ingresando..." : "Iniciar sesión"}
+        </Button>
       </Form>
 
       <p className="mt-3">

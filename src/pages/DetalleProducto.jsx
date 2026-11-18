@@ -1,7 +1,8 @@
-import { Button, Col, Container, Row, Table } from "react-bootstrap";
+import { Alert, Button, Col, Container, Row, Table } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import ImagenProducto from "../components/ImagenProducto";
-import { obtenerProductoPorCodigo } from "../data/productos";
+import { useApi } from "../hooks/useApi";
+import { obtenerProductoPorCodigo } from "../services/productoService";
 import { esStockCritico } from "../utils/stock";
 import { useCarrito } from "../context/CarritoContext";
 import { formatearPrecio, precioFinal, tieneOferta } from "../utils/precio";
@@ -10,7 +11,27 @@ function DetalleProducto({ onAgregarCarrito }) {
   // El código llega desde la URL /productos/:codigo (Guía 11).
   const { codigo } = useParams();
   const { agregar: agregarAlCarrito } = useCarrito();
-  const producto = obtenerProductoPorCodigo(codigo);
+  const { datos: producto, cargando, error } = useApi(
+    () => obtenerProductoPorCodigo(codigo),
+    [codigo]
+  );
+
+  if (cargando) {
+    return (
+      <Container as="main" className="py-4">
+        <p className="text-muted">Cargando...</p>
+      </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container as="main" className="py-4">
+        <Alert variant="danger">{error}</Alert>
+        <Link to="/productos">Volver a productos</Link>
+      </Container>
+    );
+  }
 
   if (!producto) {
     return (
