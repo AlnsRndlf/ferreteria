@@ -42,3 +42,46 @@ export async function listarProductosCriticos() {
   const lista = await peticion(API_URL, "/api/v1/productos/stock-critico");
   return lista.map(aProducto);
 }
+
+// Convierte los datos del formulario en lo que espera el backend
+function aSolicitud(d) {
+  return {
+    codigo: d.codigo.trim(),
+    nombre: d.nombre.trim(),
+    marca: d.marca || null,
+    unidad: d.unidad || null,
+    subcategoria: d.subcategoria || null,
+    descripcion: d.descripcion || null,
+    precio: Number(d.precio),
+    stock: Number(d.stock),
+    stockMinimo: d.stockMinimo === "" || d.stockMinimo == null ? 0 : Number(d.stockMinimo),
+    descuento: d.descuento === "" || d.descuento == null ? 0 : Number(d.descuento),
+    imagen: d.imagen || null,
+    categoriaId: d.categoriaId,
+  };
+}
+
+export async function crearProducto(datos) {
+  const creado = await peticion(API_URL, "/api/v1/productos", {
+    metodo: "POST",
+    cuerpo: aSolicitud(datos),
+  });
+  return aProducto(creado);
+}
+
+export async function actualizarProducto(id, datos) {
+  const actualizado = await peticion(API_URL, `/api/v1/productos/${id}`, {
+    metodo: "PUT",
+    cuerpo: aSolicitud(datos),
+  });
+  return aProducto(actualizado);
+}
+
+export function eliminarProducto(id) {
+  return peticion(API_URL, `/api/v1/productos/${id}`, { metodo: "DELETE" });
+}
+
+// El backend actualiza el producto completo, así que se reenvían sus datos con el stock nuevo
+export function actualizarStock(producto, nuevoStock) {
+  return actualizarProducto(producto.id, { ...producto, stock: nuevoStock });
+}

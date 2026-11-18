@@ -15,6 +15,8 @@ function Perfil() {
   return (
     <PanelLayout titulo="Mi perfil">
       <dl className="row">
+        <dt className="col-sm-3">Nombre</dt>
+        <dd className="col-sm-9">{usuario ? usuario.nombre : "—"}</dd>
         <dt className="col-sm-3">Correo</dt>
         <dd className="col-sm-9">{usuario ? usuario.correo : "—"}</dd>
         <dt className="col-sm-3">Rol</dt>
@@ -36,8 +38,7 @@ function Perfil() {
 
       {!registrado && (
         <p className="text-muted">
-          Esta sesión no corresponde a un usuario registrado (por ejemplo, el
-          acceso de prueba), por eso no hay más datos que mostrar.
+          Por ahora solo se guardan en el servidor tu nombre, correo y rol.
         </p>
       )}
     </PanelLayout>

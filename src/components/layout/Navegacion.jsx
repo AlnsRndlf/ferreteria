@@ -5,7 +5,7 @@ import { useCarrito } from "../../context/CarritoContext";
 import { useUsuarioActual } from "../../hooks/useUsuarioActual";
 import { useApi } from "../../hooks/useApi";
 import { listarNombresCategorias } from "../../services/categoriaService";
-import { ROLES_PANEL } from "../../constants/roles";
+import { ROLES, ROLES_PANEL } from "../../constants/roles";
 import { formatearMonto } from "../../utils/precio";
 
 function Navegacion() {
@@ -83,7 +83,12 @@ function Navegacion() {
             {usuario ? (
               <>
                 {puedeEntrarAlPanel && (
-                  <Button as={Link} to="/panel" variant="outline-primary" size="sm">
+                  <Button
+                    as={Link}
+                    to={usuario.tipoUsuario === ROLES.ADMINISTRADOR ? "/panel" : "/panel/pedidos"}
+                    variant="outline-primary"
+                    size="sm"
+                  >
                     Panel
                   </Button>
                 )}
