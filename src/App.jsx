@@ -70,8 +70,8 @@ function App() {
       <Route path="/panel/categorias/editar/:id" element={<Protegida roles={ROLES_SOLO_ADMIN}><CategoriaForm /></Protegida>} />
       <Route path="/panel/usuarios" element={<Protegida roles={ROLES_SOLO_ADMIN}><UsuariosAdmin /></Protegida>} />
       <Route path="/panel/usuarios/nuevo" element={<Protegida roles={ROLES_SOLO_ADMIN}><UsuarioForm /></Protegida>} />
-      <Route path="/panel/usuarios/editar/:run" element={<Protegida roles={ROLES_SOLO_ADMIN}><UsuarioForm /></Protegida>} />
-      <Route path="/panel/usuarios/:run/historial" element={<Protegida roles={ROLES_SOLO_ADMIN}><HistorialCompras /></Protegida>} />
+      <Route path="/panel/usuarios/editar/:id" element={<Protegida roles={ROLES_SOLO_ADMIN}><UsuarioForm /></Protegida>} />
+      <Route path="/panel/usuarios/:id/historial" element={<Protegida roles={ROLES_SOLO_ADMIN}><HistorialCompras /></Protegida>} />
       <Route path="/panel/reportes" element={<Protegida roles={ROLES_SOLO_ADMIN}><Reportes /></Protegida>} />
 
       {/* ---- Cualquier otra dirección ---- */}

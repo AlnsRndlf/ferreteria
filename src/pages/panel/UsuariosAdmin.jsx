@@ -1,20 +1,28 @@
 import { useState } from "react";
+import { Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import EstadoCarga from "../../components/EstadoCarga";
 import PanelLayout from "../../components/PanelLayout";
-import { obtenerUsuarios, eliminarUsuario } from "../../data/usuarios";
+import { useApi } from "../../hooks/useApi";
+import { eliminarUsuario, listarUsuarios } from "../../services/usuarioService";
 
 function UsuariosAdmin() {
-  const [version, setVersion] = useState(0);
   const navegar = useNavigate();
+  const { datos, cargando, error, recargar } = useApi(listarUsuarios, []);
+  const [errorAccion, setErrorAccion] = useState("");
 
-  const usuarios = obtenerUsuarios();
+  const usuarios = datos ?? [];
 
-  function manejarEliminar(run, nombre) {
-    const confirmar = window.confirm(`¿Eliminar al usuario "${nombre}"?`);
+  async function manejarEliminar(usuario) {
+    const nombre = `${usuario.nombre} ${usuario.apellidos}`.trim();
+    if (!window.confirm(`¿Eliminar al usuario "${nombre}"?`)) return;
 
-    if (confirmar) {
-      eliminarUsuario(run);
-      setVersion(version + 1);
+    setErrorAccion("");
+    try {
+      await eliminarUsuario(usuario.id);
+      recargar();
+    } catch (e) {
+      setErrorAccion(e.message);
     }
   }
 
@@ -28,67 +36,61 @@ function UsuariosAdmin() {
         + Nuevo usuario
       </button>
 
-      <div className="table-responsive">
-        <table className="table table-hover align-middle" key={version}>
-          <thead>
-            <tr>
-              <th>RUN</th>
-              <th>Nombre</th>
-              <th>Correo</th>
-              <th>Tipo</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {usuarios.length === 0 && (
-              <tr>
-                <td colSpan={5}>
-                  Todavía no hay usuarios registrados (ni desde el registro
-                  público ni desde acá).
-                </td>
-              </tr>
-            )}
+      {errorAccion && <Alert variant="danger" className="mt-3">{errorAccion}</Alert>}
 
-            {usuarios.map((usuario) => (
-              <tr key={usuario.run}>
-                <td>{usuario.run}</td>
-                <td>
-                  {usuario.nombre} {usuario.apellidos}
-                </td>
-                <td>{usuario.correo}</td>
-                <td>{usuario.tipoUsuario}</td>
-                <td>
-                  <button
-                    type="button"
-                    className="panel-boton editar me-1"
-                    onClick={() => navegar(`/panel/usuarios/${usuario.run}/historial`)}
-                  >
-                    Historial
-                  </button>
-                  <button
-                    type="button"
-                    className="panel-boton editar me-1"
-                    onClick={() => navegar(`/panel/usuarios/editar/${usuario.run}`)}
-                  >
-                    Editar
-                  </button>
-                  <button
-                    type="button"
-                    className="panel-boton eliminar"
-                    onClick={() =>
-                      manejarEliminar(usuario.run, `${usuario.nombre} ${usuario.apellidos}`)
-                    }
-                  >
-                    Eliminar
-                  </button>
-                </td>
+      <EstadoCarga cargando={cargando} error={error}>
+        <div className="table-responsive">
+          <table className="table table-hover align-middle">
+            <thead>
+              <tr>
+                <th>RUN</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Tipo</th>
+                <th>Acciones</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {usuarios.map((usuario) => (
+                <tr key={usuario.id}>
+                  <td>{usuario.run || "—"}</td>
+                  <td>
+                    {usuario.nombre} {usuario.apellidos}
+                  </td>
+                  <td>{usuario.correo}</td>
+                  <td>{usuario.tipoUsuario}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="panel-boton editar me-1"
+                      onClick={() => navegar(`/panel/usuarios/${usuario.id}/historial`)}
+                    >
+                      Historial
+                    </button>
+                    <button
+                      type="button"
+                      className="panel-boton editar me-1"
+                      onClick={() => navegar(`/panel/usuarios/editar/${usuario.id}`)}
+                    >
+                      Editar
+                    </button>
+                    <button
+                      type="button"
+                      className="panel-boton eliminar"
+                      onClick={() => manejarEliminar(usuario)}
+                    >
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </EstadoCarga>
     </PanelLayout>
   );
 }
 
 export default UsuariosAdmin;
+

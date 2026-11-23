@@ -2,11 +2,14 @@ import { AUTH_URL } from "../config/api";
 import { peticion } from "./http";
 
 // El backend usa ADMIN / VENDEDOR / CLIENTE; el resto de la app usa estos nombres
-const ROL_A_TIPO = {
+export const ROL_A_TIPO = {
   ADMIN: "Administrador",
   VENDEDOR: "Vendedor",
   CLIENTE: "Cliente",
 };
+export const TIPO_A_ROL = Object.fromEntries(
+  Object.entries(ROL_A_TIPO).map(([rol, tipo]) => [tipo, rol])
+);
 
 function aUsuario(respuesta) {
   return {
@@ -26,10 +29,12 @@ export async function login(correo, password) {
   return aUsuario(respuesta);
 }
 
-export async function registrarCliente({ nombre, correo, password }) {
+export async function registrarCliente({
+  run, nombre, apellidos, correo, password, region, comuna, direccion,
+}) {
   return peticion(AUTH_URL, "/api/v1/auth/registro", {
     metodo: "POST",
-    cuerpo: { nombre, correo, password },
+    cuerpo: { run, nombre, apellidos, correo, password, region, comuna, direccion },
     token: null,
   });
 }

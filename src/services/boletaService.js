@@ -46,6 +46,15 @@ export async function listarPedidos() {
   return lista.map(aPedido);
 }
 
+// Las de un cliente según su correo (solo ADMIN, para el historial de compras)
+export async function listarPedidosPorCorreo(correo) {
+  const lista = await peticion(
+    API_URL,
+    `/api/v1/boletas/por-cliente?correo=${encodeURIComponent(correo)}`
+  );
+  return lista.map(aPedido);
+}
+
 // Las del usuario que inició sesión
 export async function listarMisPedidos() {
   const lista = await peticion(API_URL, "/api/v1/boletas/mias");
