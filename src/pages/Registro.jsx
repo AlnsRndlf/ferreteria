@@ -44,15 +44,21 @@ function Registro() {
     setEnviando(true);
     try {
       await registrarCliente({
-        nombre: `${datos.nombre.trim()} ${datos.apellidos.trim()}`.slice(0, 100),
+        run: datos.run.trim(),
+        nombre: datos.nombre.trim(),
+        apellidos: datos.apellidos.trim(),
         correo: datos.correo.trim(),
         password: datos.contrasena,
+        region: datos.region,
+        comuna: datos.comuna,
+        direccion: datos.direccion.trim(),
       });
       setDatos(inicial);
       setRegistrado(true);
     } catch (error) {
       if (error.status === 409) {
-        setErrores({ correo: "Ya existe un usuario con ese correo." });
+        // El backend avisa si lo repetido es el RUN o el correo
+        setErrores(error.message.includes("RUN") ? { run: error.message } : { correo: error.message });
       } else {
         setErrorGeneral(error.message);
       }
